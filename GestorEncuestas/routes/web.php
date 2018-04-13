@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/gestionarencuestas', function () {
-    return view('gestor');
+    return view('prueba');
 });
 
 

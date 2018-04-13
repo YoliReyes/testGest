@@ -77,14 +77,18 @@ body.nav-sm .profile {
 .menu_section h3 {
   height:20px;
   padding-left: 15px;
-  color: #fff;
+  color: #ffffff;
+  background: #7C6262;
   text-transform: uppercase;
   letter-spacing: .5px;
   font-weight: bold;
   font-size: 12px;
-  margin-bottom: 100;
+  margin-bottom:30px;
   margin-top: 0;
-  border-bottom: 1px solid #A29090;
+  padding-top: 9px;
+  padding-bottom: 19px;
+  border-bottom: 1px solid #A29090; */
+
   }
 .menu_section >ul {
   margin-top: 10px;
@@ -160,6 +164,7 @@ body.nav-sm span.fa, body.nav-sm .menu_section h3 {
   background: #EDEDED;
   border-bottom: 1px solid #D9DEE4;
   margin-bottom: 10px;
+  padding-top: 21px;
   width: 100%;
 }
 body.nav-md .container.body .col-md-3.left_col {
@@ -574,9 +579,12 @@ li.current-page a {
   margin-left: 0 !important;
   line-height: 59px;
   display: block;
-  height: 55px;
+  height: 80px;
   margin: 0;
   padding-left: 10px;
+  padding-top:10px;
+  border-bottom: 1px solid #A29090;
+
 }
 .site_title:hover, .site_title:focus {
   text-decoration: none
@@ -653,6 +661,8 @@ li.current-page a {
 }
 .main_menu_side {
   padding: 0;
+  padding-top: 3px;
+
 }
 .bs-docs-sidebar .nav>li>a {
   display: block;
