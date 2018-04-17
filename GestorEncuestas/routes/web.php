@@ -15,8 +15,6 @@ Route::get('/', function () {
     return 'login';
 });
 
-Route::get('/gestionarencuestas', function () {
-    return view('prueba');
-});
+Route::get('/gestionarencuestas', 'controlador@cargaTablaInicial');
 
 

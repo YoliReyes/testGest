@@ -1,24 +1,65 @@
-  .nav_icono {
+/* Comunes */
+.nav_icono {
     position:absolute;
     bottom:-225px;
     left:13px;
   }
 
-  table {
+h2{
+    color: #544343;
+    margin-top:110px;
+    margin-bottom:20px;
+  }
+
+table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
 }
 
 td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid #ffffff;
     text-align: left;
     padding: 8px;
+    color: black;
+}
+
+th{
+    background: #A29090;
+
 }
 
 tr:nth-child(even) {
     background-color: #dddddd;
 }
+
+/* vista general encuestas */
+
+.no_activa{
+    background: #F5BCA9;
+}
+
+.activa{
+    background: #A9F5BC;
+}
+
+td.icons_table{
+    color: #544343;
+    font-size:20px; 
+    text-align: center;
+}
+
+.icono{
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+
+
+
+
+
+
 
 
 
