@@ -25,18 +25,20 @@
             <h3 class=".nav_titular">Gestor de Encuestas</h3>
 
               <ul class="nav side-menu">
-                <li><a><i class="fa fa-plus-circle"></i> Nueva Encuesta <span class="fa fa-chevron-down"></span></a></li>
+                <li><a><i class="fa fa-plus-circle"></i> Nueva Encuesta </a></li>
                 
-                <li><a><i class="fa fa-database"></i> Encuestas Actuales <span class="fa fa-chevron-down"></span></a>
+                <li><a><i class="fa fa-database"></i> Encuestas Actuales </a>
                   
+                  <!--
                   <ul class="nav child_menu" style="display: none">
                     <li><a href="chartjs.html">Todas</a></li>
                     <li><a href="chartjs.html">Activas</a></li>
                     <li><a href="chartjs.html">Finalizadas</a></li>
                   </ul>
+                  -->
                 </li>
 
-                <li><a><i class="fa fa-line-chart"></i> Administrar Resultados <span class="fa fa-chevron-down"></span></a></li>
+                <li><a><i class="fa fa-line-chart"></i> Administrar Resultados </a></li>
              
               </ul>
             </div>

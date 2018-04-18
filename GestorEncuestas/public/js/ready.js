@@ -1,6 +1,9 @@
+$(document).ready(function() {
 
-// A $( document ).ready() block.
-$( document ).ready(function() {
-
-	$('#init_table').DataTable();
-});
+	$('#init_table').DataTable({
+		"language": {
+			"url": "spanish.json"
+		}
+	});
+	
+} );

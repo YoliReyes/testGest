@@ -1,36 +1,51 @@
 /* Comunes */
+
 .nav_icono {
     position:absolute;
     bottom:-225px;
     left:13px;
   }
 
-h2{
-    color: #544343;
-    margin-top:110px;
-    margin-bottom:20px;
+.nav.side-menu> li > a{
+    background: rgb(92, 73, 71)!important;
+    padding-bottom: 12px;
+
+}
+
+.nav.side-menu> li > a:hover{
+    background: #96221A!important;
+
+}
+
+.h2_new{
+    color: #544343 !important;
+    margin-top:110px!important;
+    margin-bottom:20px!important;
   }
 
+  /* tabla */
+
 table {
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
+    font-family: arial, sans-serif !important;
+    border-collapse: collapse !important;
     width: 100%;
 }
 
 td, th {
-    border: 1px solid #ffffff;
-    text-align: left;
+    border: 1px solid #ffffff !important;
     padding: 8px;
     color: black;
+    text-align: center;
+
 }
 
 th{
-    background: #A29090;
+    background: #A29090 !important;
 
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd;
+    background-color: #dddddd ;
 }
 
 /* vista general encuestas */
@@ -41,6 +56,10 @@ tr:nth-child(even) {
 
 .activa{
     background: #A9F5BC;
+}
+
+.texto_oculto{
+    display:none
 }
 
 td.icons_table{
