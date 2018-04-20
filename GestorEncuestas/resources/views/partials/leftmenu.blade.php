@@ -9,7 +9,7 @@
         <div class="left_col scroll-view">
 
           <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title">
+            <a href="{{'/gestionarencuestas'}}" class="site_title">
             <img src="{{ asset('images/logo_icono.png')}}" alt="icono tecnun" >
             <img class="letras" src="{{ asset('images/logo_texto.png')}}" alt="icono tecnun" > 
             </a>
@@ -25,9 +25,9 @@
             <h3 class=".nav_titular">Gestor de Encuestas</h3>
 
               <ul class="nav side-menu">
-                <li><a><i class="fa fa-plus-circle"></i> Nueva Encuesta </a></li>
+                <li><a href="{{'/iniciocrearencuesta'}}"><i class="fa fa-plus-circle"></i> Nueva Encuesta </a></li>
                 
-                <li><a><i class="fa fa-database"></i> Encuestas Actuales </a>
+                <li><a href="{{'/gestionarencuestas'}}"><i class="fa fa-database"></i> Encuestas Actuales </a>
                   
                   <!--
                   <ul class="nav child_menu" style="display: none">
@@ -38,7 +38,7 @@
                   -->
                 </li>
 
-                <li><a><i class="fa fa-line-chart"></i> Administrar Resultados </a></li>
+                <li><a href="{{'/iniciogestionarresultados'}}"><i class="fa fa-line-chart"></i> Administrar Resultados </a></li>
              
               </ul>
             </div>

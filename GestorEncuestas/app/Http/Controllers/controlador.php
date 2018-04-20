@@ -18,5 +18,15 @@ class controlador extends Controller
 
         return view ('index',compact('encuestas'));
     }
+
+    public function iniciocrearencuesta()
+    {
+        return view ('crearencuesta');
+    }
+
+    public function iniciogestionarresultados()
+    {
+       return "inicio gestionar resultados";
+    }
 }
 

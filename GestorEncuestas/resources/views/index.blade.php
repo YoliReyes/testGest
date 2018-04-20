@@ -4,7 +4,7 @@
 <!-- page content -->
 <div class="right_col" role="main">
   
-<h2 class="h2_new"> <i class="fa fa-database"></i> &nbsp; Encuestas Actuales </h2>
+<h2 class="h2_new"> <i class="fa fa-database"></i> &nbsp; ENCUESTAS ACTUALES </h2>
 
 <table id="init_table" class="table table-striped table-bordered">
   <thead>

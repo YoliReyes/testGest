@@ -17,4 +17,9 @@ Route::get('/', function () {
 
 Route::get('/gestionarencuestas', 'controlador@cargaTablaInicial');
 
+Route::get('/iniciocrearencuesta', 'controlador@iniciocrearencuesta');
+
+Route::get('/iniciogestionarresultados', 'controlador@iniciogestionarresultados');
+
+
 
