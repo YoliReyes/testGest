@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\encuestas;
+use App\idiomas;
+
 use Illuminate\Support\Facades\DB;
 
 
@@ -21,12 +23,33 @@ class controlador extends Controller
 
     public function iniciocrearencuesta()
     {
-        return view ('crearencuesta');
+        $clave= $this->generaIdEncuesta();
+        $idiomas = DB::table('idiomas')->get();
+        
+        return view ('crearencuesta',compact('idiomas','clave'));
     }
 
     public function iniciogestionarresultados()
     {
        return "inicio gestionar resultados";
+    }
+
+
+
+    // generador de claves para encuestas
+    public function generaIdEncuesta (){
+        $string = "";
+        $number= rand(1000,9999);
+        $possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        for ( $i = 0; $i < 3; $i++ ){
+            $char = substr($possible, mt_rand(0, strlen($possible)-1), 1);
+            $string .= $char;
+        }
+
+        $clave = $string . "_" . $number;
+        
+        return $clave;
     }
 }
 

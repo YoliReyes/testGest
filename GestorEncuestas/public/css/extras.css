@@ -9,12 +9,10 @@
 .nav.side-menu> li > a{
     background: rgb(92, 73, 71)!important;
     padding-bottom: 12px;
-
 }
 
 .nav.side-menu> li > a:hover{
     background: #96221A!important;
-
 }
 
 .h2_new{
@@ -36,12 +34,10 @@ td, th {
     padding: 8px;
     color: black;
     text-align: center;
-
 }
 
 th{
     background: #A29090 !important;
-
 }
 
 tr:nth-child(even) {
@@ -71,6 +67,12 @@ td.icons_table{
 .icono{
     padding-right: 15px;
     padding-left: 15px;
+}
+
+/* contador de pasos*/
+
+.pasos a{
+    text-decoration-line: none
 }
 
 
