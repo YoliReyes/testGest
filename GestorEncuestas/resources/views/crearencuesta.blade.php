@@ -9,7 +9,7 @@
   <div class="col-md-12 col-sm-12 col-xs-12">  
     <div class="x_panel">
       <div class="x_title">
-        <h2 id="titulo_auto">{{$clave}} &nbsp;| &nbsp;<span id="titulo_autocarga">Titulo Encuesta</span></h2>
+        <h2>{{$clave}} &nbsp;| &nbsp;<span id="titulo_autocarga">Titulo Encuesta</span></h2>
       <div class="clearfix"></div>
     </div>
     </br>
@@ -70,7 +70,12 @@
 
           @foreach ($idiomas->all() as $idioma)
             <li>
-              <p><div class="icheckbox_flat-green"><input id="{{$idioma->id_idioma}}" type="checkbox" class="flat" ></div> &nbsp;&nbsp;{{$clave}} &nbsp;| &nbsp;{{strtoupper($idioma->descripcion)}}</p>
+              <p>
+                <div class="icheckbox_flat-green">
+                  <input id="paso1_{{$idioma->id_idioma}}" type="checkbox"  class="flat"  >
+                </div> 
+                &nbsp;&nbsp;{{$clave}} &nbsp;| &nbsp;{{strtoupper($idioma->descripcion)}}
+              </p>
             </li>
           @endforeach
 
@@ -85,38 +90,39 @@
           <h4 class="StepTitle">Información General</h4>
           <div class="clearfix"></div>
         </div>
-        <p>Datos generales de la encuesta.</p>
+        <p>Datos generales de la encuesta ( Debes seleccionar al menos un idioma en el paso 1 ).</p>
         </br>
       <form class="form-horizontal form-label-left">
        <!-- start accordion -->
-       <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+          <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                @foreach ($idiomas->all() as $idioma)
-            <div class="panel">
-              <a class="panel-heading" role="tab" id="heading{{$idioma->id_idioma}}" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$idioma->id_idioma}}" aria-expanded="true" aria-controls="collapse{{$idioma->id_idioma}}">
-                <h4 class="panel-title">{{$clave}} | {{$idioma->descripcion}}</h4>
-              </a>
-              <div id="collapse{{$idioma->id_idioma}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$idioma->id_idioma}}">
-                <div class="panel-body">
-                  <div class="form-group">
-                    </br>
-                      <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div id="gender" class="btn-group" data-toggle="buttons">
-                          <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                            <input type="radio" name="gender" value="male"> &nbsp; Visible &nbsp;
-                          </label>
-                          <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                            <input type="radio" name="gender" value="female" checked=""> Oculto
-                          </label>
+
+              <div id="paso2_{{$idioma->id_idioma}}" class="panel" hidden="hidden">
+                <a class="panel-heading" role="tab" id="heading{{$idioma->id_idioma}}" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$idioma->id_idioma}}" aria-expanded="true" aria-controls="collapse{{$idioma->id_idioma}}">
+                  <h4 class="panel-title">{{$clave}} | {{$idioma->descripcion}}</h4>
+                </a>
+                <div id="collapse{{$idioma->id_idioma}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$idioma->id_idioma}}">
+                  <div class="panel-body">
+                    <div class="form-group">
+                      </br>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                          <div id="gender" class="btn-group" data-toggle="buttons">
+                            <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="gender" value="male"> &nbsp; Visible &nbsp;
+                            </label>
+                            <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                              <input type="radio" name="gender" value="female" checked=""> Oculto
+                            </label>
+                          </div>
                         </div>
                       </div>
-                    </div>
                     
                       <div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Título <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                          <input id="titulo{{$idioma->id_idioma}}" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 
@@ -207,8 +213,19 @@
       $('#wizard_verticle').smartWizard({
         transitionEffect: 'slide'
       });
-
     });
-  </script>
+    
+    function mostrarDivPaso1(idioma){
+		console.log("hola");
+		alert(idioma);
 
+		if ( $('#paso1_es' ).is(':checked') )
+		{
+			$("pasos2_es").show(); 
+		}else{
+			$("pasos2_es").show(); 
+		}
+	}
+  </script>
+ 
 @stop()

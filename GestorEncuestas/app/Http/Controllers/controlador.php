@@ -14,9 +14,9 @@ class controlador extends Controller
     public function cargaTablaInicial()
     {
         $encuestas = DB::table('encuestas')
-                ->orderByRaw('clave_encuesta')
-                ->orderByRaw('idioma DESC')
-                ->get();
+                    ->orderByRaw('clave_encuesta')
+                    ->orderByRaw('idioma DESC')
+                    ->get();
 
         return view ('index',compact('encuestas'));
     }
@@ -24,7 +24,9 @@ class controlador extends Controller
     public function iniciocrearencuesta()
     {
         $clave= $this->generaIdEncuesta();
-        $idiomas = DB::table('idiomas')->get();
+        $idiomas = DB::table('idiomas')
+                   ->orderByRaw('id_idioma DESC')
+                   ->get();
         
         return view ('crearencuesta',compact('idiomas','clave'));
     }
