@@ -44,7 +44,7 @@ $(document).ready(function() {
 		});
 
 		$('#paso1_es').on('ifChanged', function (event) {
-			var a =$('#paso1_es').iCheck('check');
+			var a =$('#paso1_es').iCheck('check');//funciones de icheck
 			console.log(a);
 				
 		});
