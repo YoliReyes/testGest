@@ -26,7 +26,7 @@ $(document).ready(function() {
 
 	function mostrarDivPaso1(idioma){
 		console.log("hola");
-		alert(idioma)
+		alert(idioma);
 
 		if ( $('#paso1_es' ).is(':checked') )
 		{
