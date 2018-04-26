@@ -33,7 +33,7 @@
           <tr>
             <td>{{$encuesta->clave_encuesta}}</td>
 
-            @if($encuesta->idioma=='es')
+            @if($encuesta->idioma =='es')
               <td class='icons_table'><i title="Editar" class="flag-icon flag-icon-es"></i><span class="texto_oculto">{{$encuesta->idioma}}</span></td>
             @else
               <td class='icons_table'><i title="Editar" class="flag-icon flag-icon-gb"></i><span class="texto_oculto">{{$encuesta->idioma}}</span></td>
