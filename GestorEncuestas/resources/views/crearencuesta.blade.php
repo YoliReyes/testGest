@@ -189,7 +189,7 @@
               </div>
             </div>
             <!-- end of accordion -->
-            <!-- PASO 2 - GENERAL -->
+            <!-- PASO 3 - APARTADOS -->
             <div id="step-3">
               <div class="x_title">
                 <h4 class="StepTitle">Apartados</h4>
@@ -199,6 +199,29 @@
               </br>
 
               <div class="form-horizontal form-label-left">
+                <div class="cajaSeparador">
+                  
+                  @foreach ($idiomas->all() as $idioma)
+                    <div style="height:65px">
+                      <h4>{{$idioma->descripcion}}</h4>
+
+                      <div class="col-md-3 col-sm-6 col-xs-12 form-group">
+                        <input type="text" class="form-control" id="inputSuccess2" placeholder="Titulo de Apartado">
+                      </div>
+      
+                      <div class="col-md-9 col-sm-6 col-xs-12 form-group">
+                        <input type="text" class="form-control" id="inputSuccess2" placeholder="Descripción">
+                      </div>
+                    </div>
+                  @endforeach
+                 <button type="submit" class="btn btn-success">Añadir</button>
+                </div>
+
+                      <div class="alert alert-success alert-dismissible fade in" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
+                    </button>
+                    <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
+                  </div>
                       
                 <div class="accordion">
 
