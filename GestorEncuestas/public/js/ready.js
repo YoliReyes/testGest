@@ -14,6 +14,7 @@ $(document).ready(function() {
 
 	});
 
+	
 	//copia automatica de titulo en crear
 
 	$('#tituloes').on('keyup', function () {
@@ -35,6 +36,7 @@ $(document).ready(function() {
 		contenidoPaso4 = '<div class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close"><i class="fa fa-pencil"></i></button>'
 
 			$('#idiomaencuesta').find('input').each(function() {
+		
 				//Recogida de valores de los idiomas chequeados
 				if($('#idiomaencuesta').find('input')[cont].checked == true){
 
@@ -58,8 +60,19 @@ $(document).ready(function() {
 		//Generar div con datos 
 		$('#apartados').append(contenidoPaso3);
 		$('#listaapartados').append(contenidoPaso4);
-
 	});	
-} );
+
+
+	$('input').on("click",function(){
+		valor = $(this).attr('placeholder');
+		$(this).attr("placeholder","")
+
+
+	}).on("blur",function(){
+			$(this).attr("placeholder",valor);
+		
+			
+	});
+});
 
 

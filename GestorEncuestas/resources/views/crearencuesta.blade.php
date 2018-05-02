@@ -18,7 +18,7 @@
         $('#paso3_' + idioma).hide();
       });
     }
-
+    
 </script>
 
 <!-- Cuerpo de la página -->
@@ -38,7 +38,7 @@
 
       <div class="x_content">
 
-        <!-- Contenido Cuenta pasos -->
+        <!-- Contenido Cuenta pasos - cambiar x este y este dejarlo para las preguntas;https://codepen.io/AlexRebula/pen/bpMwjK-->
         <div id="wizard" class="form_wizard wizard_horizontal">
 
           <!-- Barra Cuenta pasos -->

@@ -74,12 +74,13 @@ function SmartWizard(target, options) {
         //elmActionBar.append($this.loader);
         $this.target.append($this.elmStepContainer);
 
+        elmActionBar.append($this.buttons.previous)
+        .append($this.buttons.next);
+
         if ($this.options.includeFinishButton){
             elmActionBar.append($this.buttons.finish)
         }
-
-        elmActionBar.append($this.buttons.next)
-            .append($this.buttons.previous);
+            
         $this.target.append(elmActionBar);
         this.contentWidth = $this.elmStepContainer.width();
 
@@ -475,9 +476,9 @@ function SmartWizard(target, options) {
         enableFinishButton: false, // make finish button enabled always
         hideButtonsOnDisabled: false, // when the previous/next/finish buttons are disabled, hide them instead?
         errorSteps:[],    // Array Steps with errors
-        labelNext:'Next',
-        labelPrevious:'Previous',
-        labelFinish:'Finish',
+        labelNext:'Siguiente >>',
+        labelPrevious:'<< Volver',
+        labelFinish:'Terminar',
         noForwardJumping: false,
         ajaxType: "POST",
         onLeaveStep: null, // triggers when leaving a step
