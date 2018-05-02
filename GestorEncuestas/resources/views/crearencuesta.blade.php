@@ -92,28 +92,26 @@
             
             
             <!-- Crea por cada idioma existente en la base un check con sus eventos -->
+            <div id="idiomaencuesta">
+              @foreach ($idiomas->all() as $idioma)
+                <div class="accordion">
 
-            @foreach ($idiomas->all() as $idioma)
+                  <span class="panel-heading" role="tab">   
 
-              <div class="accordion">
-                <span class="panel-heading" role="tab">   
-
-                  @if ($idioma->id_idioma == "es")
-                    <p class="panel-title"><input id="paso1_{{$idioma->id_idioma}}" type="checkbox"  class="flat" checked>
-                  @else
-                    <p class="panel-title"><input id="paso1_{{$idioma->id_idioma}}" type="checkbox"  class="flat">
-                  @endif
-                    
-                </span> &nbsp;&nbsp;{{$clave}} &nbsp;| &nbsp;{{strtoupper($idioma->descripcion)}}
-              </div> 
-
+                    @if ($idioma->id_idioma == "es")
+                      <p class="panel-title"><input id="paso1_{{$idioma->id_idioma}}" type="checkbox"  class="flat" checked>
+                    @else
+                      <p class="panel-title"><input id="paso1_{{$idioma->id_idioma}}" type="checkbox"  class="flat">
+                    @endif
+                      
+                  </span> &nbsp;&nbsp;{{$clave}} &nbsp;| &nbsp;{{strtoupper($idioma->descripcion)}}
+                </div> 
               <script type="text/javascript">
                 crearEventos('{{$idioma->id_idioma}}');
               </script>
               </br>
-
-            @endforeach
-
+             @endforeach
+            </div>
             </br>
           </div>
           <!-- FIN idiomas -->
@@ -182,8 +180,9 @@
                           </div>  
                         </div>
                       </div>
+                      </br>
+
                     </div>
-                    </br>
                   @endforeach
                 </div>
               </div>
@@ -199,57 +198,56 @@
               </br>
 
               <div class="form-horizontal form-label-left">
-                <div class="cajaSeparador">
-                  
+                <div id="contenidoapartados" class="cajaSeparador">
+
                   @foreach ($idiomas->all() as $idioma)
-                    <div style="height:65px">
-                      <h4>{{$idioma->descripcion}}</h4>
 
-                      <div class="col-md-3 col-sm-6 col-xs-12 form-group">
-                        <input type="text" class="form-control" id="inputSuccess2" placeholder="Titulo de Apartado">
-                      </div>
-      
-                      <div class="col-md-9 col-sm-6 col-xs-12 form-group">
-                        <input type="text" class="form-control" id="inputSuccess2" placeholder="Descripción">
-                      </div>
-                    </div>
-                  @endforeach
-                 <button type="submit" class="btn btn-success">Añadir</button>
-                </div>
+                    @if ($idioma->id_idioma == "es")
+                      <div id='paso3_{{$idioma->id_idioma}}' style="height:65px" >
+                    @else
+                      <div id='paso3_{{$idioma->id_idioma}}' style="height:65px" hidden="hidden">
+                    @endif
+                        <h4>{{$idioma->descripcion}}</h4>
 
-                      <div class="alert alert-success alert-dismissible fade in" role="alert">
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span>
-                    </button>
-                    <strong>Holy guacamole!</strong> Best check yo self, you're not looking too good.
-                  </div>
-                      
-                <div class="accordion">
-
-                    <!-- start accordion -->
-                    @foreach ($idiomas->all() as $idioma)
-
-                      @if ($idioma->id_idioma == "es")
-                        <div id="paso3_{{$idioma->id_idioma}}" >
-                      @else
-                        <div id="paso3_{{$idioma->id_idioma}}" hidden="hidden">
-                      @endif
-                    
-                      <a class="panel-heading" role="tab" id="paso3h_{{$idioma->id_idioma}}" data-toggle="collapse" data-parent="#accordion" href="#paso3c_{{$idioma->id_idioma}}" aria-expanded="true" aria-controls="collapse{{$idioma->id_idioma}}">   
-                        <p class="panel-title"><i class="fa fa-pencil"></i> &nbsp;&nbsp; {{$clave}} | {{$idioma->descripcion}}</p>
-                      </a>
-                      <div id="paso3c_{{$idioma->id_idioma}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="paso3h_{{$idioma->id_idioma}}">
-                        <div class="panel-body">
-                          
+                        <div id="titulo" class="col-md-3 col-sm-6 col-xs-12 form-group">
+                          <input type="text" class="form-control" id="apartadotitulo" placeholder="Titulo de Apartado">
                         </div>
-                      </div>
-                      </br>
-                    @endforeach
-                  </div>
+        
+                        <div id="descripcion" class="col-md-9 col-sm-6 col-xs-12 form-group">
+                          <input type="text" class="form-control" id="apartadodescripcion" placeholder="Descripción">
+                        </div>
+                    </div>
+
+                  @endforeach
+
+                 <button id="nuevoapartado" type="submit" class="btn btn-success">Añadir Apartado</button>
+
+                 
                 </div>
-              </div>
+
+                </br>
+                
+                <!-- Div de carga de los nuevos apartados -->
+                <div id="apartados">
+                </div>
+              </div> 
+            </div>     
 
             <div id="step-4">
-              <h2 class="StepTitle">Step 4 Content</h2>
+            <div class="x_title">
+                <h4 class="StepTitle">Preguntas</h4>
+                <div class="clearfix"></div>
+              </div>
+              <p>Completar las preguntas de cada apartado.</p>
+              </br>
+              <div id="listaapartados">
+              </div>
+            </div>
+
+            <div id="step-5">
+              <h2 class="StepTitle">Step 5 Content</h2>
+
+                          
               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
@@ -262,17 +260,14 @@
                 in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
             </div>
+
+
+
+
+
           </div>
           <!-- End SmartWizard Content -->
-
-
-
-
-
-          
-
-
-        </div>
+       </div>
     </div>
   </div>
 </div>

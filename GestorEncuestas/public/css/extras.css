@@ -22,11 +22,9 @@
   }
 
 .cajaSeparador{
-    background: #5CC2B6;
+    background: rgb(215, 245, 241);
     padding:20px;
     border-radius: 5px;
-    color:white;
-
 }
 
   /* tabla */
