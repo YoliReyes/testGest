@@ -133,57 +133,54 @@
                       <p class="panel-title"><input id="paso1_{{$idioma->id_idioma}}" type="checkbox"  class="flat"> &nbsp;&nbsp;Común a todas las encuestas</p>
                   </span>
                   </br>
+                  <div class="cajaSeparador">
+                    <!-- start accordion -->
+                    @foreach ($idiomas->all() as $idioma)
 
-                  <!-- start accordion -->
-                  @foreach ($idiomas->all() as $idioma)
-
-                    @if ($idioma->id_idioma == "es")
-                      <div id="paso2_{{$idioma->id_idioma}}" >
-                    @else
-                      <div id="paso2_{{$idioma->id_idioma}}" hidden="hidden">
-                    @endif
-                  
-                    <a class="panel-heading" role="tab" id="heading{{$idioma->id_idioma}}" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$idioma->id_idioma}}" aria-expanded="true" aria-controls="collapse{{$idioma->id_idioma}}">   
-                      <p class="panel-title"><i class="fa fa-pencil"></i> &nbsp;&nbsp; {{$clave}} | {{$idioma->descripcion}}</p>
-                    </a>
-                    <div id="collapse{{$idioma->id_idioma}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$idioma->id_idioma}}">
-                      <div class="panel-body">
-                        <div class="form-group">
-                          </br>
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado</label>
-                              <div class="col-md-6 col-sm-6 col-xs-12">
-                              <div id="gender" class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                  <input type="radio" name="gender" value="male"> &nbsp; Visible &nbsp;
-                                </label>
-                                <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                  <input type="radio" name="gender" value="female" checked=""> Oculto
-                                </label>
+                      @if ($idioma->id_idioma == "es")
+                        <div id="paso2_{{$idioma->id_idioma}}" >
+                      @else
+                        <div id="paso2_{{$idioma->id_idioma}}" hidden="hidden">
+                      @endif
+                    
+                      <a class="panel-heading" role="tab" id="heading{{$idioma->id_idioma}}" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$idioma->id_idioma}}" aria-expanded="true" aria-controls="collapse{{$idioma->id_idioma}}">   
+                        <p class="panel-title"><i class="fa fa-pencil"></i> &nbsp;&nbsp; {{$clave}} | {{$idioma->descripcion}}</p>
+                      </a>
+                      <div id="collapse{{$idioma->id_idioma}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading{{$idioma->id_idioma}}">
+                        <div class="panel-body">
+                          
+                            <div>
+                              <div class="col-md-3 col-sm-6 col-xs-12">
+                                <input id="titulo{{$idioma->id_idioma}}" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" placeholder="Titulo de Encuesta">
                               </div>
                             </div>
-                          </div>
-                        
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Título <span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input id="titulo{{$idioma->id_idioma}}" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
-                            </div>
-                          </div>
 
-                          <div class="form-group">
-                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Descripción<span class="required">*</span>
-                            </label>
-                            <div class="col-md-6 col-sm-6 col-xs-12">
-                              <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                            <div>
+                              <div class="col-md-9 col-sm-6 col-xs-12">
+                                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" placeholder="Descripción de Apartado">
+                              </div>
+                            </div> 
+                            </br></br>
+                            <div class="form-group">
+                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                <div id="gender" class="btn-group" data-toggle="buttons">
+                                  <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" name="gender" value="male"> &nbsp; Visible &nbsp;
+                                  </label>
+                                  <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" name="gender" value="female" checked=""> Oculto
+                                  </label>
+                                </div>
+                              </div>
                             </div>
-                          </div>  
+                          
+
+                          </div>
                         </div>
                       </div>
-                      </br>
-
-                    </div>
-                  @endforeach
+                    @endforeach
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,4 +1,13 @@
 /* Comunes */
+:root {
+    --Gris-oscuro: #524c57;
+    --Gris-Fondo:#c4c8d4;
+    --Gris-bloques: #d6d9e1;
+    --Gris-texto:#666670;
+    --Rosa-titulares:#f26972;
+    --Azul-titulares:#508391;
+    --Naranja-titulares:#ee7b58;
+  }
 
 .nav_icono {
     position:absolute;
@@ -7,13 +16,11 @@
   }
 
 .nav.side-menu> li > a{
-    background: rgb(92, 73, 71)!important;
+    background:var(--Gris-oscuro)!important;
     padding-bottom: 12px;
 }
 
-.nav.side-menu> li > a:hover{
-    background: #96221A!important;
-}
+
 
 .h2_new{
     color: #544343 !important;
@@ -22,9 +29,13 @@
   }
 
 .cajaSeparador{
-    background: rgb(215, 245, 241);
+    background:#D7F5F1;
     padding:20px;
     border-radius: 5px;
+}
+
+.textosemidestacado{
+    color:var(--Gris-oscuro);
 }
 
   /* tabla */

@@ -25,7 +25,7 @@ class controlador extends Controller
     {
         $clave= $this->generaIdEncuesta();
         $idiomas = DB::table('idiomas')
-                   ->orderByRaw('id_idioma DESC')
+                   ->orderByRaw('id_orden ASC')
                    ->get();
         
         return view ('crearencuesta',compact('idiomas','clave'));
