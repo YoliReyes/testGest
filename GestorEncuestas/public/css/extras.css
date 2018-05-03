@@ -23,19 +23,22 @@
 
 
 .h2_new{
-    color: #544343 !important;
+    color: #524c57 !important;
     margin-top:110px!important;
     margin-bottom:20px!important;
   }
 
 .cajaSeparador{
-    background:#D7F5F1;
-    padding:20px;
+    background:#CEF6CE;
     border-radius: 5px;
 }
 
+.padding20{
+    padding:20px;
+}
+
 .textosemidestacado{
-    color:var(--Gris-oscuro);
+    color:white;
 }
 
   /* tabla */
@@ -54,17 +57,17 @@ td, th {
 }
 
 th{
-    background: #A29090 !important;
+    background: #ddd !important;
 }
 
 tr:nth-child(even) {
-    background-color: #dddddd ;
+    background-color: #F2F2F2 ;
 }
 
 /* vista general encuestas */
 
 .no_activa{
-    background: #F5BCA9;
+    background: #EFF8FB;
 }
 
 .activa{
@@ -76,7 +79,7 @@ tr:nth-child(even) {
 }
 
 td.icons_table{
-    color: #544343;
+    color: #524c57;
     font-size:20px; 
     text-align: center;
 }

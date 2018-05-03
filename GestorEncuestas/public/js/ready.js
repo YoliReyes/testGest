@@ -39,7 +39,7 @@ $(document).ready(function() {
 
 		//inicio de html de nuevos div para paso 3 y 4
 		contenidoPaso3 = '<div class="alert alert-success alert-dismissible fade in" role="alert"><button onclick = "$(\'#apartado' + cont_apartados + '_paso4\').remove();" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button><p><strong class="textosemidestacado"> APARTADO ' + cont_apartados + ' </strong></p>';
-		contenidoPaso4 = '<div id="apartado'+ cont_apartados +'_paso4" class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close"><i class="fa fa-pencil"></i></button><p><strong class="textosemidestacado"> APARTADO ' + cont_apartados + '</strong></p>';
+		contenidoPaso4 = '<div id="apartado'+ cont_apartados +'_paso4" class="alert alert-success alert-dismissible fade in" role="alert"><button type="button" class="close"><i class="fa fa-pencil"></i></button><strong class="textosemidestacado">' + cont_apartados + ' | </strong>';
 
 			$('#idiomaencuesta').find('input').each(function() {
 		
@@ -63,7 +63,7 @@ $(document).ready(function() {
 					//añade html div paso4
 					if(idioma=="ES"){
 
-						contenidoPaso4 += "<p id='paso4_apartado" + cont_apartados + "'><strong>" + titulo.toUpperCase() + "</strong> | Nº Preguntas [ 0 ]</p>";
+						contenidoPaso4 += "<span id='paso4_apartado" + cont_apartados + "'><strong>" + titulo.toUpperCase() + "</strong> | Nº Preguntas [ 0 ]</span>";
 					}
 				}
 

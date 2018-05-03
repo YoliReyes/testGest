@@ -129,8 +129,8 @@
                     
               <div class="accordion">
 
-                  <span  class="panel-heading" role="tab" id="heading{{$idioma->id_idioma}}" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$idioma->id_idioma}}" aria-expanded="true" aria-controls="collapse{{$idioma->id_idioma}}">   
-                      <p class="panel-title"><input id="paso1_{{$idioma->id_idioma}}" type="checkbox"  class="flat"> &nbsp;&nbsp;Común a todas las encuestas</p>
+                  <span  class="panel-heading" id="comun" style="background:#CEF6CE">   
+                      <p class="panel-title"><input id="paso1_{{$idioma->id_idioma}}" type="checkbox"  class="flat"> &nbsp;&nbsp; Encuesta común para todas las encuestas</p>
                   </span>
                   </br>
                   <div class="cajaSeparador">
@@ -138,9 +138,9 @@
                     @foreach ($idiomas->all() as $idioma)
 
                       @if ($idioma->id_idioma == "es")
-                        <div id="paso2_{{$idioma->id_idioma}}" >
+                        <div id="paso2_{{$idioma->id_idioma}}" style="border-bottom: 12px solid white" >
                       @else
-                        <div id="paso2_{{$idioma->id_idioma}}" hidden="hidden">
+                        <div id="paso2_{{$idioma->id_idioma}}" style="border-bottom: 12px solid white" hidden="hidden">
                       @endif
                     
                       <a class="panel-heading" role="tab" id="heading{{$idioma->id_idioma}}" data-toggle="collapse" data-parent="#accordion" href="#collapse{{$idioma->id_idioma}}" aria-expanded="true" aria-controls="collapse{{$idioma->id_idioma}}">   
@@ -195,7 +195,7 @@
               </br>
 
               <div class="form-horizontal form-label-left">
-                <div id="contenidoapartados" class="cajaSeparador">
+                <div id="contenidoapartados" class="cajaSeparador padding20">
 
                   @foreach ($idiomas->all() as $idioma)
 
