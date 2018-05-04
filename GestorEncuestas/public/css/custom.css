@@ -3270,8 +3270,8 @@ html > body > .ui-pnotify {
 /* theming */
 
 .alert-success {
-  background-color: darkseagreen;
-  color:0B3B17;
+  background-color: seagreen;
+  color:white;
 }
 .alert-info {
   color: #E9EDEF;

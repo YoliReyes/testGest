@@ -36,6 +36,5 @@
   
   <script src="js/ready.js"></script>
 
-
-</head>
+ </head>
 
