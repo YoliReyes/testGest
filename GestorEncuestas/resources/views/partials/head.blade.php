@@ -35,6 +35,8 @@
   <link href="./images/flag-icon-css-master/css/flag-icon.css" rel="stylesheet">
   
   <script src="js/ready.js"></script>
+  <script src="js/misfunciones.js"></script>
+
 
  </head>
 

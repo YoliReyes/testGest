@@ -61,5 +61,6 @@
     </table>
   </div>
 </div>
+
 <!-- /end page content -->
 @stop()

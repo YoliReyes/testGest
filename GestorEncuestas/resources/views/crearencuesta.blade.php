@@ -1,7 +1,7 @@
 @extends('layouts/master')
 @section('maincontent')
 
-<!--  PASO 1 | Genera Eventos Mostrar/ocultar div de paso 2 en función de idioma --> 
+<!--  script PASO 1 | Genera Eventos Mostrar/ocultar divs de paso 2 y 3 en función de idioma checkeado --> 
 
 <script type="text/javascript">
 
@@ -21,7 +21,9 @@
     
 </script>
 
-<!-- Cuerpo de la página -->
+<!--================================================================================================-->
+
+<!-- Inicio HTML || Cuerpo de la página -->
 
 <div class="right_col" role="main">
 
@@ -81,7 +83,10 @@
           </ul>
           <!-- fin Barra Cuenta pasos -->
 
+<!--================================================================================================-->
+
           <!-- PASO 1 - idiomas -->
+
           <div id="step-1">
             <div class="x_title">
               <h4 class="StepTitle">Idiomas</h4>
@@ -116,7 +121,10 @@
           </div>
           <!-- FIN idiomas -->
 
+<!--================================================================================================-->
+
           <!-- PASO 2 - GENERAL -->
+
           <div id="step-2">
             <div class="x_title">
               <h4 class="StepTitle">Información General</h4>
@@ -185,7 +193,11 @@
               </div>
             </div>
             <!-- end of accordion -->
+
+<!--================================================================================================-->
+
             <!-- PASO 3 - APARTADOS -->
+
             <div id="step-3">
               <div class="x_title">
                 <h4 class="StepTitle">Apartados</h4>
@@ -193,7 +205,8 @@
               </div>
               <p>Datos relacionados con los apartados de la encuesta.</p>
               </br>
-
+              
+              <!-- formulario de carga de titulo y descripcion -->
               <div class="form-horizontal form-label-left">
                 <div id="contenidoapartados" class="cajaSeparador padding20">
 
@@ -218,17 +231,18 @@
                   @endforeach
 
                  <button id="nuevoapartado" type="submit" class="btn btn-success">Añadir Apartado</button>
-
-                 
                 </div>
-
+                <!-- fin formulario -->                
                 </br>
-                
-                <!-- Div de carga de los nuevos apartados -->
+                <!-- Div de carga de los bloques de nuevos apartados  -->
                 <div id="apartados">
                 </div>
               </div> 
-            </div>     
+            </div> 
+
+<!--================================================================================================-->
+            
+            <!-- PASO 4 - APARTADOS -->
 
             <div id="step-4">
             <div class="x_title">
@@ -237,9 +251,14 @@
               </div>
               <p>Completar las preguntas de cada apartado.</p>
               </br>
+              <!-- Div de carga de los bloques de nuevos apartados // ready.js -->
               <div id="listaapartados">
               </div>
             </div>
+
+<!--================================================================================================-->
+            
+            <!-- PASO 5 - APARTADOS -->
 
             <div id="step-5">
               <h2 class="StepTitle">Step 5 Content</h2>
@@ -261,32 +280,14 @@
           <!-- End SmartWizard Content -->
        </div>
     </div>
+      
   </div>
-  <div id="modals" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                      <div id="modal1" class="modal-content">
-
-                        <div class="modal-header">
-                          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
-                          </button>
-                          <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                        </div>
-                        <div class="modal-body">
-                          <h4>Text in a modal</h4>
-                          <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor.</p>
-                          <p>Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.</p>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                          <button type="button" class="btn btn-primary">Save changes</button>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-</div>
+  <!-- Div de carga de modals -->
+  <div id="modals">
+  </div>
 
 <!-- /end page content -->
+
 
 <!-- form wizard -->
 <script type="text/javascript" src="js/wizard/jquery.smartWizard.js"></script>
