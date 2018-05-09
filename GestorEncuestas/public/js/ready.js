@@ -20,7 +20,7 @@ $(document).ready(function() {
 
 //=========================================================================================
 	
-	//copia automatica de titulo en crear
+	//copia automatica de titulo en crear paso 1
 
 	$('#tituloes').on('keyup', function () {
 		$('#titulo_autocarga').text($("#tituloes").val());

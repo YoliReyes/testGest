@@ -2813,8 +2813,8 @@ span.tag {
   float: left;
   padding: 5px 9px;
   text-decoration: none;
-  background: #96221A;
-  color: #F1F6F7;
+  background: #04B486;
+  color: black!important;
   margin-right: 5px;
   font-weight: 500;
   margin-bottom: 5px;
@@ -2964,7 +2964,6 @@ ul.timeline li {
   pointer-events: none;
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
-  border-left: 11px solid #96221A;
 }
 .timeline h2.title {
   position: relative;
