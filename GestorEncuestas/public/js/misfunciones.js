@@ -1,7 +1,13 @@
 //añade nuevo paso a apartado preguntas
 
+var contPreguntas = 2;
+
 function anadirdivpreguntas(){
-	$('#menupreguntas').append('<li class="pasos"><a href="#step-1"><span class="step_no">1</span><span class="step_descr"></span></a></li>');
+    
+	$('#menupreguntasprueba').prepend('<li class="pasos"><a href="#step-' + contPreguntas + '"><span class="step_no">' + contPreguntas + '</span><span class="step_descr"></span></a></li>');
+    $('#nuevosapartados').append('<div id="step-' + contPreguntas + '"><div class="x_title"><h4 class="StepTitle">Pregunta ' + contPreguntas + '</h4><div class="clearfix"></div></div><p>Selecciona el o los idiomas en los que realizar la encuesta.</p></br><div class="accordion">panel ' + contPreguntas + '</div></div>');
+    
+        contPreguntas++;
 }
 
 //=========================================================================================
@@ -38,12 +44,21 @@ function generaHTMLmodal(cont_apartados){
     contenido +='<ul id="menupreguntas" class="wizard_steps">';
     contenido +=    '<li class="pasos"><a onclick="anadirdivpreguntas();"><span class="step_no">+</span><span class="step_descr"></span></a></li>';
     contenido +=    '<li class="pasos"><a href="#step-B1"><span class="step_no">1</span><span class="step_descr"></span></a></li>';
+    contenido +=    '<li class="pasos"><a href="#step-B2"><span class="step_no">1</span><span class="step_descr"></span></a></li>';
+
     contenido +='</ul>';
     
     contenido +='<div id="step-B1">';
     contenido +=    '<div class="x_title"><h4 class="StepTitle">Numero de pregunta</h4>';
     contenido +=         '<div class="clearfix"></div></div>';
     contenido +=         '<p>Selecciona el tipo de pregunta y formatosdfasdfasef.</p></br>';
+    contenido +=           '<div class="accordion">panel 1 </div>';
+    contenido +=    '</div>'
+    contenido +='<div id="step-B2">';
+    contenido +=    '<div class="x_title"><h4 class="StepTitle">Numero de pregunta</h4>';
+    contenido +=         '<div class="clearfix"></div></div>';
+    contenido +=         '<p>Selecciona el tipo de pregunta y formatosdfasdfasef.</p></br>';
+    contenido +=           '<div class="accordion">panel 1 </div>';
     contenido +=    '</div>'
     contenido +='</div>';
     //FIN WIZARD
@@ -56,4 +71,5 @@ function generaHTMLmodal(cont_apartados){
     return contenido;
 
 }
+
 
