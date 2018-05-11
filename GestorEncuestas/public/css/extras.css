@@ -29,7 +29,7 @@
   }
 
 .cajaSeparador{
-    background:#CEF6CE;
+    background:#E0F8E6  ;
     border-radius: 5px;
 }
 
@@ -98,6 +98,42 @@ td.icons_table{
 .formpreguntas{
     background-color:#A9F5BC;
     }
+
+
+/*seccion preguntas*/
+
+/*.mitad{
+    width:45%;
+    float:left;
+    margin-left: 30px;
+}*/
+
+.panelpreguntas{
+    background: #f7f7f7;
+    color:#524c57;
+}
+
+.gris{
+    background: #EDEDED!important;
+    margin-bottom: 15px; 
+    padding:15px;
+}
+
+hr{
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+label.margen{
+    padding-left: 2px;   
+    padding-bottom: 7px;
+    text-align: left!important;
+    display: block;
+}
+
+
+
+
 
 
 
