@@ -1,5 +1,21 @@
-//añade nuevo paso a apartado preguntas paso 5
+//script PASO 1 | Genera Eventos Mostrar/ocultar divs de paso 2 y 3 en función de idioma checkeado 
 
+function crearEventos(idioma){
+      
+    $('#paso1_' + idioma).on('ifChecked', function (event) {
+      $('#paso2_' + idioma).show();
+      $('#paso3_' + idioma).show();
+
+    });
+
+    $('#paso1_' + idioma).on('ifUnchecked', function (event) {
+      $('#paso2_' + idioma).hide();
+      $('#paso3_' + idioma).hide();
+    });
+  }
+
+
+//añade nuevo paso a apartado preguntas paso 5
 
 function anadirdivpreguntas(cont_apartados){
     
@@ -111,7 +127,7 @@ function generapregunta(cont_apartados,n_pregunta){
 
     contenido +=                            '<div class="form-group col-md-6 col-sm-9 col-xs-12">'
     contenido +=                                '<label class="control-label margen">Valor tipo</label>';
-    contenido +=                                '<select class="form-control">';
+    contenido +=                                '<select id="valortipo_A' + cont_apartados + 'P' +  n_pregunta  +  '"class="form-control">';
     contenido +=                                    '<option value="texto">Datos personales</option>';
     contenido +=                                    '<option value="calificacion">Estadística</option>';
     contenido +=                                    '<option value="opcion">Salto de preguntas</option>';
@@ -120,7 +136,7 @@ function generapregunta(cont_apartados,n_pregunta){
 
     contenido +=                            '<div class="form-group col-md-6 col-sm-9 col-xs-12">';
     contenido +=                                '<label class="control-label margen">Pregunta tipo</label>';
-    contenido +=                                    '<select class="form-control">';
+    contenido +=                                    '<select onchange="activardesactivarinput(' +  n_pregunta + ',' + cont_apartados + ')" id="preguntatipo_A' + cont_apartados + 'P' +  n_pregunta  +  '" class="form-control">';
     contenido +=                                        '<option value="texto">Texto libre</option>';
     contenido +=                                        '<option value="calificacion">Calificación</option>';
     contenido +=                                        '<option value="opcion">Seleccionar opción</option>';
@@ -130,7 +146,7 @@ function generapregunta(cont_apartados,n_pregunta){
     contenido +=                            '<div class="col-md-6 col-sm-9 col-xs-12">'
     contenido +=                                '<div class="form-group">';
     contenido +=                                    '<label class="control-label margen">Enunciado</label>';
-    contenido +=                                        '<textarea class="form-control" rows="2" placeholder="Escribe aquí la pregunta"></textarea>';
+    contenido +=                                        '<textarea class="form-control" rows="3" placeholder="Escribe aquí la pregunta"></textarea>';
     contenido +=                                '</div>';
 
     contenido +=                                '<div class="form-group">   ';
@@ -140,14 +156,33 @@ function generapregunta(cont_apartados,n_pregunta){
     contenido +=                            '</div>';
 
     contenido +=                            '<div class="col-md-6 col-sm-9 col-xs-12">'
-    contenido +=                                '<div id="respuestas_A' + cont_apartados + '" class="form-group">';
-    contenido +=                                    '<label class="control-label margen">Respuestas posibles</label>';
-    contenido +=                                    '<input class="form-control" placeholder="Escribe aquí la respuesta"></br>';
-    contenido +=                                    '<input class="form-control" placeholder="Escribe aquí la pregunta"></br>';
-    contenido +=                                    '<input class="form-control" placeholder="Escribe aquí la pregunta"></br>';
-    contenido +=                                    '<button type="button" class="btn btn-round btn-success"><i class="fa fa-plus"></i></button>';
+    contenido +=                                '<div id="respuestas_A' + cont_apartados + 'P' +  n_pregunta  +  '" class="form-group">';
+    contenido +=                                    '<label class="control-label margen">Respuestas posibles ( Mínimo dos respuestas necesarias )</label>';
+    contenido +=                                    '<input class="form-control margeninferior" placeholder="Escribe aquí la respuesta" disabled>';
+    contenido +=                                    '<input class="form-control margeninferior" placeholder="Escribe aquí la respuesta" disabled></br>';
+
+    contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
+    contenido +=                                        '<input type="text" value="" class="form-control" placeholder="Escribe aquí otra respuesta" disabled>';
+    contenido +=                                        '<span onclick="$( this ).parent().remove()" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
+    contenido +=                                    '</div>';
+
+    contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
+    contenido +=                                        '<input type="text" value="" class="form-control" placeholder="Escribe aquí otra respuesta" disabled>';
+    contenido +=                                        '<span onclick="$( this ).parent().remove()" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
+    contenido +=                                    '</div>';
+
+    contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
+    contenido +=                                        '<input type="text" value="" class="form-control" placeholder="Escribe aquí otra respuesta" disabled>';
+    contenido +=                                        '<span onclick="$( this ).parent().remove()" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
+    contenido +=                                    '</div>';
 
     contenido +=                                '</div>';
+
+    contenido +=                                    '<div onclick="nuevarespuesta(' + n_pregunta + ',' + cont_apartados +')" class="input-group demo2 colorpicker-element">';
+    contenido +=                                        '<input type="text" value="Añadir nuevo campo de respuesta" class="form-control plusgreen" readonly="readonly" disabled>';
+    contenido +=                                        '<span class="input-group-addon green"><i class="fa fa-plus" style="color:white"></i></span>';
+    contenido +=                                    '</div></br>';
+
     contenido +=                            '</div>';
 
 
@@ -162,6 +197,34 @@ function generapregunta(cont_apartados,n_pregunta){
     return contenido;
 }
 
+//=========================================================================================
 
+//funcion para generar nuevos input para respuestas
 
+function nuevarespuesta( n_pregunta, cont_apartados ){
+    
+    // Comprueba si esta activo el tipo "seleccionar opcion", sino no debe añadir
+    if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion"){
 
+    contenido ='<div class="input-group demo2 colorpicker-element">';
+    contenido +=	'<input type="text" value="" class="form-control" placeholder="Escribe aquí otra respuesta">';
+    contenido +=    '<span onclick="$( this ).parent().remove()" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
+    contenido +='</div>';
+    
+    $( '#respuestas_A' + cont_apartados + 'P' +  n_pregunta ).append(contenido); 
+    }
+}
+
+//=========================================================================================
+
+//funcion para activar/desactivar inputs
+function activardesactivarinput( n_pregunta, cont_apartados ){
+
+    if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion"){
+
+        $( '#respuestas_A' + cont_apartados + 'P' +  n_pregunta ).find('input').removeAttr('disabled');   
+    
+    }else{
+        $( '#respuestas_A' + cont_apartados + 'P' +  n_pregunta ).find('input').attr('disabled','');   
+    }
+}

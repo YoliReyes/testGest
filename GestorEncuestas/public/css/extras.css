@@ -29,7 +29,7 @@
   }
 
 .cajaSeparador{
-    background:#E0F8E6  ;
+    background:#F7F7F7  ;
     border-radius: 5px;
 }
 
@@ -126,10 +126,24 @@ hr{
 
 label.margen{
     padding-left: 2px;   
-    padding-bottom: 7px;
+    padding-bottom: 11px;
     text-align: left!important;
     display: block;
 }
+
+.margeninferior{
+    margin-bottom: 9px;
+}
+
+.input-group-addon.green{
+    background: #04B486;
+}
+
+.plusgreen {
+    background: #04B486!important;
+    color:white;
+}
+
 
 
 

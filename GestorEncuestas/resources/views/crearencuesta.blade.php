@@ -1,25 +1,6 @@
 @extends('layouts/master')
 @section('maincontent')
 
-<!--  script PASO 1 | Genera Eventos Mostrar/ocultar divs de paso 2 y 3 en función de idioma checkeado --> 
-
-<script type="text/javascript">
-
-    function crearEventos(idioma){
-      
-      $('#paso1_' + idioma).on('ifChecked', function (event) {
-        $('#paso2_' + idioma).show();
-        $('#paso3_' + idioma).show();
-
-      });
-
-      $('#paso1_' + idioma).on('ifUnchecked', function (event) {
-        $('#paso2_' + idioma).hide();
-        $('#paso3_' + idioma).hide();
-      });
-    }
-    
-</script>
 
 <!--================================================================================================-->
 
