@@ -90,7 +90,7 @@
                       <p class="panel-title"><input id="paso1_{{$idioma->id_idioma}}" type="checkbox"  class="flat">
                     @endif
                       
-                  </span> &nbsp;&nbsp;{{$clave}} &nbsp;| &nbsp;{{strtoupper($idioma->descripcion)}}
+                  </span><span id="idencuestaidioma"> &nbsp;&nbsp;{{$clave}} &nbsp;| &nbsp;{{strtoupper($idioma->descripcion)}}<span>
                 </div> 
               <script type="text/javascript">
                 crearEventos('{{$idioma->id_idioma}}');
