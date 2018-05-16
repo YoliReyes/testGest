@@ -162,7 +162,7 @@ function generapregunta(cont_apartados,n_pregunta){
             contenido +=                            '</div>';
 
             contenido +=                            '<div class="col-md-6 col-sm-9 col-xs-12">'
-            contenido +=                                '<div id="respuestas_A' + cont_apartados + 'P' +  n_pregunta  +  '" class="form-group respuestas">';
+            contenido +=                                '<div " class="form-group respuestas respuestas_A' + cont_apartados + 'P' +  n_pregunta + '">';
             contenido +=                                    '<label class="control-label margen">Respuestas posibles ( Mínimo dos respuestas necesarias )</label>';
                 
             contenido +=                                    '<div onclick="nuevarespuesta(' + n_pregunta + ',' + cont_apartados +')" class="input-group demo2 colorpicker-element">';
@@ -174,18 +174,18 @@ function generapregunta(cont_apartados,n_pregunta){
             contenido +=                                    '<input class="form-control margeninferior actdesact" placeholder="Escribe aquí la respuesta" disabled></br>';
 
             contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
-            contenido +=                                        '<input type="text" value="" class="form-control actdesact" placeholder="Escribe aquí otra respuesta" disabled>';
+            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar2" placeholder="Escribe aquí otra respuesta" disabled>';
+            contenido +=                                        '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',2)" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
+            contenido +=                                    '</div>';
+
+            contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
+            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar3" placeholder="Escribe aquí otra respuesta" disabled>';
+            contenido +=                                        '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',3)" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
+            contenido +=                                    '</div>';
+
+            contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
+            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar4" placeholder="Escribe aquí otra respuesta" disabled>';
             contenido +=                                        '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',4)" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
-            contenido +=                                    '</div>';
-
-            contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
-            contenido +=                                        '<input type="text" value="" class="form-control actdesact" placeholder="Escribe aquí otra respuesta" disabled>';
-            contenido +=                                        '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',5)" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
-            contenido +=                                    '</div>';
-
-            contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
-            contenido +=                                        '<input type="text" value="" class="form-control actdesact" placeholder="Escribe aquí otra respuesta" disabled>';
-            contenido +=                                        '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',6)" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
             contenido +=                                    '</div>';
 
             contenido +=                                '</div>';
@@ -209,17 +209,17 @@ function generapregunta(cont_apartados,n_pregunta){
 
 //funcion para generar/eliminar nuevos input para respuestas
 
+apartadosactuales = 5;
+
 function nuevarespuesta( n_pregunta, cont_apartados ){
 
-    // añadir variable con jquery q cuente el numero de im¡nputs con la clase x y añadir el numero a la funcion del onclick
-
-    // Comprueba si esta activo el tipo "seleccionar opcion", sino no debe añadir
+     // Comprueba si esta activo el tipo "seleccionar opcion", sino no debe añadir
 
     if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion"){
 
         contenido ='<div class="input-group demo2 colorpicker-element">';
-        contenido +=	'<input type="text" value="" class="form-control actdesact" placeholder="Escribe aquí otra respuesta">';
-        contenido +=    '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',' + $( this ).html() + ')" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
+        contenido +=	'<input type="text" value="" class="form-control actdesact eliminar' + apartadosactuales  + '" placeholder="Escribe aquí otra respuesta">';
+        contenido +=    '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',' + apartadosactuales + ')" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
         contenido +='</div>';
         
         $( '#step-' + n_pregunta + '_A' +  cont_apartados ).find('.respuestas').each(function() {
@@ -228,7 +228,8 @@ function nuevarespuesta( n_pregunta, cont_apartados ){
 
         });
 
-
+        apartadosactuales++;
+        
     }
 }
 
@@ -237,11 +238,11 @@ function eliminarrespuesta( n_pregunta, cont_apartados,div){
     // Comprueba si esta activo el tipo "seleccionar opcion", sino no debe añadir
     if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion"){
    
-        $( '#step-1_A1').find('.respuestas').each(function() {
+        $('#step-' + n_pregunta + '_A' + cont_apartados ).find('.respuestas').each(function() {
 		
-            $(this).find('.actdesact').parent()[1].remove() ;
+            $(this).find('.eliminar' + div).parent().remove() ;
         
-                });  
+        }); 
     }
 }
 
@@ -249,6 +250,7 @@ function eliminarrespuesta( n_pregunta, cont_apartados,div){
 //=========================================================================================
 
 //funcion para activar/desactivar inputs
+
 function activardesactivarinput( n_pregunta, cont_apartados ){
 
     if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion"){
