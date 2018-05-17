@@ -149,21 +149,7 @@
                                 <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" placeholder="Descripción de Apartado">
                               </div>
                             </div> 
-                            </br></br>
-                            <div class="form-group">
-                              <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado</label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                <div id="gender" class="btn-group" data-toggle="buttons">
-                                  <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                    <input type="radio" name="gender" value="male"> &nbsp; Visible &nbsp;
-                                  </label>
-                                  <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                    <input type="radio" name="gender" value="female" checked=""> Oculto
-                                  </label>
-                                </div>
-                              </div>
-                            </div>
-                          
+                            </br></br>                       
 
                           </div>
                         </div>
@@ -242,21 +228,49 @@
             <!-- PASO 5 - APARTADOS -->
 
             <div id="step-5">
-              <h2 class="StepTitle">Step 5 Content</h2>
+              <div class="x_title">
+                <h4 class="StepTitle">Resumen</h4>
+                <div class="clearfix"></div>
+              </div>
+              <p>Comprueba los datos introducidos.</p>
+              </br>
+              
+              <!-- formulario de carga de titulo y descripcion -->
+              <div class="form-horizontal form-label-left">
+                <div id="contenidoapartados" class="cajaSeparador padding20">
+                  <div class="form-group">
+                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado</label>
+                          <div class="col-md-6 col-sm-6 col-xs-12">
+                              <div id="gender" class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                  <input type="radio" name="gender" value="male"> &nbsp; Visible &nbsp;
+                                </label>
+                                <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                  <input type="radio" name="gender" value="female" checked=""> Oculto
+                                </label>
+                              </div>
+                          </div>
 
                           
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
-            </div>     
+                      </div>
+
+                       <h4>{{$idioma->descripcion}}</h4>
+
+                  <div id="titulo" class="col-md-3 col-sm-6 col-xs-12 form-group">
+                    <input type="text" class="form-control" id="apartadotitulo" placeholder="Titulo de Apartado">
+                  </div>
+
+                  <div id="descripcion" class="col-md-9 col-sm-6 col-xs-12 form-group">
+                    <input type="text" class="form-control" id="apartadodescripcion" placeholder="Descripción">
+                  </div>
+
+                 <button id="nuevoapartado" type="submit" class="btn btn-success">Añadir Apartado</button>
+                </div>
+                <!-- fin formulario -->                               
+              </div> 
+            </div> 
+
+
           </div>
           <!-- End SmartWizard Content -->
        </div>

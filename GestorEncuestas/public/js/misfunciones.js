@@ -1,4 +1,4 @@
-//script PASO 1 | Genera Eventos Mostrar/ocultar divs de paso 2 y 3 en función de idioma checkeado 
+//script PASO 1 |  Crea el evento que por cada idioma encontrado (paso1) || Muestrar/oculta divs de paso 2 y 3 en función de idioma checkeado 
 
 function crearEventos(idioma){
       
@@ -15,7 +15,7 @@ function crearEventos(idioma){
   }
 
 
-//añade nuevo paso a apartado preguntas paso 5
+//añade nuevo paso Wizard y correspondiente bloque al apartado preguntas del paso 5 (dentro de un Modal)
 
 function anadirdivpreguntas(cont_apartados){
     
@@ -52,7 +52,7 @@ function generaHTMLpaso4(cont_apartados){
 }
 
 function generaHTMLmodal(cont_apartados){
-    //EL CONTADOR DE PREGUNTAS HAY QUE MEJORARLO // DEBERÍA CONTAR EL Nº DE DIVS QUE YA HAY Y SEGUIR CONTANDO DESDE AHI.
+    //EL CONTADOR se puede mejorar//no se actualiza al eliminar.
     contPreguntas = 1;
 
     contenido ='<div id="modal' +  cont_apartados  + '" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-hidden="true">';
@@ -111,12 +111,22 @@ function generapregunta(cont_apartados,n_pregunta){
     contenido +=                    '<div class="x_panel panelpreguntas">';
     contenido +=                        '<div class="x_title">';
     contenido +=                            '<h2>Pregunta ' + n_pregunta + '</h2>';
+
+    contenido +=                            '<ul class="nav navbar-right panel_toolbox">';
+    contenido +=                                '<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>';
+    contenido +=                                 '</li>';
+                      
+    contenido +=                                '<li><a class="close-link"><i class="fa fa-close"></i></a>';
+    contenido +=                                '</li>';
+    contenido +=                             '</ul>';
+
+
     contenido +=                            '<div class="clearfix"></div>';
     contenido +=                         '</div>';
 
-    contenido +=                    '<form class="form-horizontal form-label-left">';
+    contenido +=                    '<form class="form-horizontal form-label-left ">';
 
-    contenido +=                        '<div class="accordion">';
+    contenido +=                        '<div class="accordion" >';
     contenido +=                            '<span class="panel-heading gris" role="tab">';
     contenido +=                                '<p class="panel-title"><input type="checkbox"  style="margin-bottom:5px;margin-right:15px;" class="icheckbox_flat-green checked" checked>';
     contenido +=                            '<span class="checkpabajo"> ¿Obligatorio responder? </span></span>';
@@ -142,6 +152,7 @@ function generapregunta(cont_apartados,n_pregunta){
 
     contenido +=                        '</div>';
 
+        //genera un bloque de formulario por cada idioma checkeado
         $('#idiomaencuesta').find('input:checked').each(function() {
 
             tituloidioma = $(this).parent().parent().find('#idencuestaidioma').text();
@@ -207,14 +218,13 @@ function generapregunta(cont_apartados,n_pregunta){
 
 //=========================================================================================
 
-//funcion para generar/eliminar nuevos input para respuestas
+//funcion para generar/eliminar nuevos input para respuestas ( paso 5 )
 
 apartadosactuales = 5;
 
 function nuevarespuesta( n_pregunta, cont_apartados ){
 
-     // Comprueba si esta activo el tipo "seleccionar opcion", sino no debe añadir
-
+    // Comprueba si esta activo el tipo "seleccionar opcion", sino no debe añadir
     if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion"){
 
         contenido ='<div class="input-group demo2 colorpicker-element">';
@@ -235,7 +245,7 @@ function nuevarespuesta( n_pregunta, cont_apartados ){
 
 function eliminarrespuesta( n_pregunta, cont_apartados,div){
     
-    // Comprueba si esta activo el tipo "seleccionar opcion", sino no debe añadir
+    // Comprueba si esta activo el tipo "seleccionar opcion", sino no debe eliminar
     if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion"){
    
         $('#step-' + n_pregunta + '_A' + cont_apartados ).find('.respuestas').each(function() {
