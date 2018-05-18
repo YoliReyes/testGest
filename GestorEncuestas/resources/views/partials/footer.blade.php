@@ -9,6 +9,9 @@
           <div id="notif-group" class="tabbed_notifications"></div>
         </div>
 
+
+        
+<!-- bootstrap progress js -->
         <script src="js/bootstrap.min.js"></script>
 
         <!-- bootstrap progress js -->

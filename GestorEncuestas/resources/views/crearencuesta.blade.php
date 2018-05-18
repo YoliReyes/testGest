@@ -250,8 +250,6 @@
                                 </label>
                               </div>
                           </div>
-
-                          
                       </div>
 
                        <h4>{{$idioma->descripcion}}</h4>

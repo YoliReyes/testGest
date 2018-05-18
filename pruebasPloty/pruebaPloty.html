@@ -1,0 +1,35 @@
+<head>
+        <!-- Plotly.js -->
+        <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+      </head>
+      
+      <body>
+        
+        <div id="myDiv"><!-- Plotly chart will be drawn inside this DIV --></div>
+        <script>
+            data = [{
+            type: 'scatterpolar',
+            r: [null, 28],
+            theta: ['10°','20°','30°','40°', '50', 'A'],
+            fill: 'toself'
+            },
+            {
+            type: 'scatterpolar',
+            r: [null, 8, null, null, null, null],
+            theta: ['A','B','C', 'D', 'E', 'A'],
+            fill: 'toself'
+            }]
+
+            layout = {
+            polar: {
+                radialaxis: {
+                visible: true,
+                range: [0, 80]
+                }
+            },
+            showlegend: false
+            }
+
+            Plotly.plot("myDiv", data, layout)       
+        </script>
+      </body>

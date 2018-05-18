@@ -25,20 +25,20 @@
   <link href="js/datatables/responsive.bootstrap.min.css" rel="stylesheet" type="text/css" />
   <link href="js/datatables/scroller.bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-  <script src="js/jquery.min.js"></script>
 
   <!-- tipografía tecnun -->
   <link href="css/fuenteRoti.css" rel="stylesheet">
   <!-- iconos -->
   <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
-  <!-- css extra fuera de plantilla -->
+  <!-- css extra fuera de plantilla original-->
   <link href="css/extras.css" rel="stylesheet">
   <!-- css iconos banderasla -->
   <link href="./images/flag-icon-css-master/css/flag-icon.css" rel="stylesheet">
   
+
+  <script src="js/jquery.min.js"></script>
   <script src="js/ready.js"></script>
   <script src="js/misfunciones.js"></script>
-
 
  </head>
 
