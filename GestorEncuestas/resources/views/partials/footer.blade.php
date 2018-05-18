@@ -11,7 +11,7 @@
 
 
         
-<!-- bootstrap progress js -->
+        <!-- bootstrap -->
         <script src="js/bootstrap.min.js"></script>
 
         <!-- bootstrap progress js -->
