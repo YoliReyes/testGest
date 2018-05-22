@@ -3,11 +3,7 @@
     --Gris-oscuro: #524c57;
     --Gris-Fondo:#c4c8d4;
     --Gris-bloques: #d6d9e1;
-    --Gris-texto:#666670;
-    --Rosa-titulares:#f26972;
-    --Azul-titulares:#508391;
-    --Naranja-titulares:#ee7b58;
-  }
+    }
 
 .nav_icono {
     position:absolute;
@@ -19,7 +15,6 @@
     background:var(--Gris-oscuro)!important;
     padding-bottom: 12px;
 }
-
 
 
 .h2_new{
@@ -39,6 +34,11 @@
 
 .textosemidestacado{
     color:#d6e9c6;
+}
+
+.tictic{
+    margin-bottom:5px!important;
+    margin-right:15px!important;
 }
 
   /* tabla */

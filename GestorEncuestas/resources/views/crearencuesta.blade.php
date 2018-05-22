@@ -234,37 +234,104 @@
               </div>
               <p>Comprueba los datos introducidos.</p>
               </br>
-              
-              <!-- formulario de carga de titulo y descripcion -->
-              <div class="form-horizontal form-label-left">
-                <div id="contenidoapartados" class="cajaSeparador padding20">
-                  <div class="form-group">
-                          <label class="control-label col-md-3 col-sm-3 col-xs-12">Estado</label>
-                          <div class="col-md-6 col-sm-6 col-xs-12">
-                              <div id="gender" class="btn-group" data-toggle="buttons">
-                                <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                  <input type="radio" name="gender" value="male"> &nbsp; Visible &nbsp;
-                                </label>
-                                <label class="btn btn-primary active" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                  <input type="radio" name="gender" value="female" checked=""> Oculto
-                                </label>
-                              </div>
-                          </div>
+<!-- ================================================================================= -->
+
+              <div class="accordion gris" >
+
+                  <div class="col-md-6 col-sm-9 col-xs-12">
+                    <span class="panel-title"><input type="checkbox" class="icheckbox_flat-green checked tictic" checked></span>
+                    <span class="checkpabajo"> ESTADO OCULTO</span>
+                  </div>
+
+                  <div class="col-md-6 col-sm-9 col-xs-12 ">  
+                    <span class="panel-title"><input type="checkbox" class="icheckbox_flat-green checked tictic" checked></span>
+                    <span class="checkpabajo"> ENCUESTA COMÚN </span>
+                  </div>
+
+                  <div style="clear: both"></div>
+                  <p></p>
+                  <div class="form-group col-md-6 col-sm-9 col-xs-12">
+    
+                    <label class="control-label margen">Título encuesta</label>
+                    <input type="text" id="valortipo_A' + cont_apartados + 'P' +  n_pregunta  +  '"class="form-control">
+      
+                  </div>   
+
+                  <div class="form-group col-md-6 col-sm-9 col-xs-12">
+
+                    <label class="control-label margen">Descripción encuesta</label>
+                    <input type="text" id="valortipo_A' + cont_apartados + 'P' +  n_pregunta  +  '"class="form-control">
+
+                  </div>
+
+                  <div style="clear: both"></div>
+
+              </div>
+
+              <!---inicio de tabpanel-->
+              <div class="x_content">
+
+                  <div class="" role="tabpanel" data-example-id="togglable-tabs">
+
+                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                      <li role="presentation" class="active"><a href="#infoapartados" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">General</a>
+                      </li>
+                      <li role="presentation" class=""><a href="#apartado1" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Sección 1</a>
+                      </li>
+                    </ul>
+
+                    <div id="myTabContent" class="tab-content">
+                    
+                      <div role="tabpanel" class="tab-pane fade active in" id="infoapartados" aria-labelledby="home-tab">
+                        
+                        <hr/>
+                            <div id="idioma">
+                            <h4>&nbsp;&nbsp;SECCIÓN 1</h4>
+                        <hr/>
+
+
+
+                        <div class="form-group col-md-1 col-sm-1 col-xs-1">
+                            <label class="control-label margen col-md-1 col-sm-1 col-xs-1">Idioma</label>
+                            <div class="form-control col-md-1 col-sm-1 col-xs-1" style="display:flex;align-items:center;">ES</div>
+                            <div class="form-control col-md-1 col-sm-5 col-xs-5" style="display:flex;align-items:center;">EN</div>
+
+
+                        </div> 
+
+                        <div class="form-group col-md-5 col-sm-9 col-xs-12">
+                            <label class="control-label margen col-md-5 col-sm-5 col-xs-5">Título encuesta</label>
+
+                            <input type="text" class=" form-control col-md-5 col-sm-9 col-xs-12">
+                            <input type="text" class=" form-control col-md-5 col-sm-9 col-xs-12">
+                        </div>
+
+                        <div class="form-group col-md-6 col-sm-9 col-xs-12">
+                           <label class="control-label margen col-md-6 col-sm-6 col-xs-6">Descripción encuesta</label>
+
+                            <input type="text" class="form-control col-md-6 col-sm-9 col-xs-12">
+                            <input type="text" class="form-control col-md-6 col-sm-9 col-xs-12">
+                        </div>
+
+  
+                    </div>
+
+
+
+
+
+                      <div role="tabpanel" class="tab-pane fade" id="apartado1" aria-labelledby="profile-tab">
+                        
                       </div>
-
-                       <h4>{{$idioma->descripcion}}</h4>
-
-                  <div id="titulo" class="col-md-3 col-sm-6 col-xs-12 form-group">
-                    <input type="text" class="form-control" id="apartadotitulo" placeholder="Titulo de Apartado">
+                
+                    </div>
                   </div>
 
-                  <div id="descripcion" class="col-md-9 col-sm-6 col-xs-12 form-group">
-                    <input type="text" class="form-control" id="apartadodescripcion" placeholder="Descripción">
-                  </div>
+              </div>
 
-                 <button id="nuevoapartado" type="submit" class="btn btn-success">Añadir Apartado</button>
-                </div>
-                <!-- fin formulario -->                               
+              <div style="clear: both"></div>
+              
+              <!-- ================================================================================= -->           
               </div> 
             </div> 
 
@@ -279,11 +346,11 @@
   <div id="modals">
   </div>
 
-<!-- /end page content -->
+  <!-- /end page content -->
 
 
-<!-- form wizard -->
-<script type="text/javascript" src="js/wizard/jquery.smartWizard.js"></script>
+  <!-- form wizard -->
+  <script type="text/javascript" src="js/wizard/jquery.smartWizard.js"></script>
   <!-- pace -->
   <script src="js/pace/pace.min.js"></script>
   <script type="text/javascript">

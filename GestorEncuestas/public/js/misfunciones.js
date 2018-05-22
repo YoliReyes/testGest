@@ -128,7 +128,7 @@ function generapregunta(cont_apartados,n_pregunta){
 
     contenido +=                        '<div class="accordion" >';
     contenido +=                            '<span class="panel-heading gris" role="tab">';
-    contenido +=                                '<p class="panel-title"><input type="checkbox"  style="margin-bottom:5px;margin-right:15px;" class="icheckbox_flat-green checked" checked>';
+    contenido +=                                '<p class="panel-title"><input type="checkbox" class="icheckbox_flat-green checked tictic" checked>';
     contenido +=                            '<span class="checkpabajo"> ¿Obligatorio responder? </span></span>';
 
     contenido +=                            '<div class="form-group col-md-6 col-sm-9 col-xs-12">'
