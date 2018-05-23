@@ -2862,7 +2862,6 @@ span.tag a {
 ul.bar_tabs {
   /* border: 1px solid #ff0000; */
   overflow: visible;
-  background: #F5F7FA;
   height: 25px;
   margin: 21px 0 14px;
   padding-left: 14px;
@@ -2881,10 +2880,9 @@ ul.bar_tabs > li {
   border-radius: 4px 4px 0 0;
 }
 ul.bar_tabs > li.active {
-  border-right: 6px solid #D3D6DA;
-  border-top: 0;
   margin-top: -15px;
 }
+
 ul.bar_tabs > li.active a {
   background: #fff;
   border-color: transparent;
@@ -2894,6 +2892,7 @@ ul.bar_tabs > li a {
   background: #F5F7FA;
   margin: 0;
   border-radius: 0;
+  color:grey;
 }
 ul.bar_tabs.right {
   padding-right: 14px;

@@ -119,7 +119,12 @@
               <div class="accordion">
 
                   <span  class="panel-heading" id="comun" style="background:#CEF6CE">   
-                      <p class="panel-title"><input id="paso1_{{$idioma->id_idioma}}" type="checkbox"  class="flat"> &nbsp;&nbsp; Encuesta común para todas las encuestas</p>
+                      <p class="panel-title"><input id="comun" type="checkbox"  class="flat"> &nbsp;&nbsp; Encuesta común para todas las encuestas</p>
+                  </span>
+                  </br>
+
+                  <span  class="panel-heading" id="comun" style="background:#CEF6CE">   
+                      <p class="panel-title"><input id="visible" type="checkbox"  class="flat"> &nbsp;&nbsp; Estado oculto</p>
                   </span>
                   </br>
                   <div class="cajaSeparador">
@@ -184,7 +189,7 @@
                     @else
                       <div id='paso3_{{$idioma->id_idioma}}' style="height:65px" hidden="hidden">
                     @endif
-                        <h4>{{$idioma->descripcion}}</h4>
+                        <h4>&nbsp;&nbsp;{{$idioma->descripcion}}</h4>
 
                         <div id="titulo" class="col-md-3 col-sm-6 col-xs-12 form-group">
                           <input type="text" class="form-control" id="apartadotitulo" placeholder="Titulo de Apartado">
@@ -193,12 +198,20 @@
                         <div id="descripcion" class="col-md-9 col-sm-6 col-xs-12 form-group">
                           <input type="text" class="form-control" id="apartadodescripcion" placeholder="Descripción">
                         </div>
-                    </div>
+
+                      </div>
 
                   @endforeach
 
-                 <button id="nuevoapartado" type="submit" class="btn btn-success">Añadir Apartado</button>
-                </div>
+                  <div class="form-group col-md-3 col-sm-9 col-xs-12">         
+                    </br>  
+                    <input value ="1" type="number" min="1" max="10" id="valor" class="form-control" placeholder="Valor">
+                  </div>
+                    
+                    <button id="nuevoapartado" type="submit" class="btn btn-success pull-right" style="margin-right:10px;margin-top:18px;">Añadir Apartado</button>
+                  <div style="clear: both"></div>
+              </div>
+
                 <!-- fin formulario -->                
                 </br>
                 <!-- Div de carga de los bloques de nuevos apartados  -->
@@ -234,7 +247,6 @@
               </div>
               <p>Comprueba los datos introducidos.</p>
               </br>
-<!-- ================================================================================= -->
 
               <div class="accordion gris" >
 
@@ -268,7 +280,8 @@
 
               </div>
 
-              <!---inicio de tabpanel-->
+       <!---inicio de tabpanel-->
+
               <div class="x_content">
 
                   <div class="" role="tabpanel" data-example-id="togglable-tabs">
@@ -281,6 +294,8 @@
                     </ul>
 
                     <div id="myTabContent" class="tab-content">
+
+       <!--====== PANEL 1 ==================================================================================================-->
                     
                       <div role="tabpanel" class="tab-pane fade active in" id="infoapartados" aria-labelledby="home-tab">
                         
@@ -289,12 +304,10 @@
                             <h4>&nbsp;&nbsp;SECCIÓN 1</h4>
                         <hr/>
 
-
-
                         <div class="form-group col-md-1 col-sm-1 col-xs-1">
                             <label class="control-label margen col-md-1 col-sm-1 col-xs-1">Idioma</label>
-                            <div class="form-control col-md-1 col-sm-1 col-xs-1" style="display:flex;align-items:center;">ES</div>
-                            <div class="form-control col-md-1 col-sm-5 col-xs-5" style="display:flex;align-items:center;">EN</div>
+                            <div class="form-control col-md-1 col-sm-1 col-xs-1 centrovertical" style="margin-bottom:10px">ES</div>
+                            <div class="form-control col-md-1 col-sm-1 col-xs-1 centrovertical" style="margin-bottom:10px">EN</div>
 
 
                         </div> 
@@ -302,38 +315,94 @@
                         <div class="form-group col-md-5 col-sm-9 col-xs-12">
                             <label class="control-label margen col-md-5 col-sm-5 col-xs-5">Título encuesta</label>
 
-                            <input type="text" class=" form-control col-md-5 col-sm-9 col-xs-12">
-                            <input type="text" class=" form-control col-md-5 col-sm-9 col-xs-12">
+                            <input type="text" class=" form-control col-md-5 col-sm-9 col-xs-12" style="margin-bottom:10px">
+                            <input type="text" class=" form-control col-md-5 col-sm-9 col-xs-12" style="margin-bottom:10px">
                         </div>
 
                         <div class="form-group col-md-6 col-sm-9 col-xs-12">
                            <label class="control-label margen col-md-6 col-sm-6 col-xs-6">Descripción encuesta</label>
-
-                            <input type="text" class="form-control col-md-6 col-sm-9 col-xs-12">
-                            <input type="text" class="form-control col-md-6 col-sm-9 col-xs-12">
+                           
+                            <input type="text" class="form-control col-md-6 col-sm-9 col-xs-12" style="margin-bottom:10px">
+                            <input type="text" class="form-control col-md-6 col-sm-9 col-xs-12" style="margin-bottom:10px">
                         </div>
 
-  
+                        <div class="col-md-2 col-sm-6 col-xs-6" style="margin-left:74px">
+
+                            <label class="control-label margen" style="margin-rigth:0px;padding-right:0px;">Valor sección</label>
+                            <input type="number" min="1" max="10" class="form-control margen col-md-2 col-sm-6 col-xs-6" style="margin-bottom:10px">
+                              
+                        </div>
                     </div>
 
+       <!--====== PANEL 2 ==================================================================================================-->
 
-
-
-
-                      <div role="tabpanel" class="tab-pane fade" id="apartado1" aria-labelledby="profile-tab">
+                    <div role="tabpanel" class="tab-pane fade" id="apartado1" aria-labelledby="profile-tab">
                         
-                      </div>
-                
-                    </div>
-                  </div>
+                                 <div id="step-' + n_pregunta + '_A' + cont_apartados + '"   >
+                        
+                                             <p></p>        
+                                             <div class="x_panel panelpreguntas">
+                                                 <div class="x_title">
+                                                     <h2>Pregunta ' + n_pregunta + '</h2>
+                    
+                                                     <ul class="nav navbar-right panel_toolbox">
+                                                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                                          </li>
+                                          
+                                                         <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                                         </li>
+                                                      </ul>
+                    
+                    
+                                                     <div class="clearfix"></div>
+                                                  </div>
+                    
+                                             <form class="form-horizontal form-label-left ">
+                    
+                                                 <div class="accordion" >
+                                                     <span class="panel-heading gris" role="tab">
+                                                         <p class="panel-title"><input type="checkbox" class="icheckbox_flat-green checked tictic" checked>
+                                                     <span class="checkpabajo"> ¿Obligatorio responder? </span></span>
+                    
+                                                     <div class="form-group col-md-6 col-sm-9 col-xs-12">
+                                                         <label class="control-label margen">Valor tipo</label>
+                                                         <select id="valortipo_A' + cont_apartados + 'P' +  n_pregunta  +  '"class="form-control">
+                                                             <option value="texto">Datos personales</option>
+                                                             <option value="calificacion">Estadística</option>
+                                                             <option value="opcion">Salto de preguntas</option>
+                                                          </select>
+                                                     </div>';   
+                    
+                                                     <div class="form-group col-md-6 col-sm-9 col-xs-12">
+                                                         <label class="control-label margen">Pregunta tipo</label>
+                                                             <select onchange="activardesactivarinput(' +  n_pregunta + ',' + cont_apartados + ')" id="preguntatipo_A' + cont_apartados + 'P' +  n_pregunta  +  '" class="form-control">
+                                                                 <option value="texto">Texto libre</option>
+                                                                 <option value="calificacion">Calificación</option>
+                                                                 <option value="opcion">Seleccionar opción</option>
+                                                             </select>
+                                                     </div>
+                                                 <div style="clear:left"></div></br>
+                    
+                                                 </div>
 
+
+
+
+
+
+
+                    </div>
+                
+       <!--====== FIN PANEL 2 ==================================================================================================-->
+                  </div>
+                </div>
               </div>
 
               <div style="clear: both"></div>
-              
-              <!-- ================================================================================= -->           
+       <!-- ================================================================================= -->           
               </div> 
             </div> 
+            <div style="clear: both"></div>
 
 
           </div>

@@ -35,12 +35,14 @@ $(document).ready(function() {
 	$('#nuevoapartado').on('click', function () {
 		//[idiomas] recoge cada div de los diferentes idiomas rellenados en el apartado 3
 		idiomas = $('#contenidoapartados').contents('div');
+		valor = $('#contenidoapartados').find('#valor').val();
+		$('#contenidoapartados').find('#valor').val(1)
 
 		//contador de inputs
 		cont = 0;
 
 		//inicio de html de nuevos div para paso 3 y 4
-		contenidoPaso3 = generaHTMLpaso3(cont_apartados);
+		contenidoPaso3 = generaHTMLpaso3(cont_apartados,valor);
 		contenidoPaso4 = generaHTMLpaso4(cont_apartados);
 
 		//selecciona los divs de idiomas del paso 1 

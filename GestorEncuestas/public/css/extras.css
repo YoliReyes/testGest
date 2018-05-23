@@ -64,6 +64,10 @@ tr:nth-child(even) {
     background-color: #F2F2F2 ;
 }
 
+.type25{
+    font-size: 16px;
+}
+
 /* vista general encuestas */
 
 .no_activa{
@@ -102,11 +106,6 @@ td.icons_table{
 
 /*seccion preguntas*/
 
-/*.mitad{
-    width:45%;
-    float:left;
-    margin-left: 30px;
-}*/
 
 .panelpreguntas{
     background: #f7f7f7;
@@ -144,6 +143,15 @@ label.margen{
     color:white;
 }
 
+
+/*paso 5*/
+
+.centrovertical{
+    align-items:center;
+    border:0px;
+    -webkit-box-shadow: 0px 0px 0px 0px;
+    display:flex; 
+}
 
 
 

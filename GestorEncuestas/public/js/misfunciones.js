@@ -33,11 +33,12 @@ function anadirdivpreguntas(cont_apartados){
 
 //funciones para generar htmls
 
-function generaHTMLpaso3(cont_apartados){
+function generaHTMLpaso3(cont_apartados,valor){
 
     contenido = '<div class="alert alert-success alert-dismissible fade in" role="alert">';
     contenido += '<button onclick = "$(\'#apartado' + cont_apartados + '_paso4\').remove();" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>';
     contenido += '<p><strong class="textosemidestacado"> APARTADO ' + cont_apartados + ' </strong></p>';
+    contenido += '<p><strong><span id="valor">[ ' + valor + '</span> puntos ] </strong> ( Valor Respecto al total de la encuesta ).</p></br>';
 
     return contenido;
 }
@@ -112,24 +113,17 @@ function generapregunta(cont_apartados,n_pregunta){
     contenido +=                        '<div class="x_title">';
     contenido +=                            '<h2>Pregunta ' + n_pregunta + '</h2>';
 
-    contenido +=                            '<ul class="nav navbar-right panel_toolbox">';
-    contenido +=                                '<li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>';
-    contenido +=                                 '</li>';
-                      
-    contenido +=                                '<li><a class="close-link"><i class="fa fa-close"></i></a>';
-    contenido +=                                '</li>';
-    contenido +=                             '</ul>';
-
-
     contenido +=                            '<div class="clearfix"></div>';
     contenido +=                         '</div>';
 
-    contenido +=                    '<form class="form-horizontal form-label-left ">';
+    contenido +=                        '</br><hr/><h4>&nbsp;&nbsp;OPCIONES GENERALES</h4><hr/>';
 
-    contenido +=                        '<div class="accordion" >';
-    contenido +=                            '<span class="panel-heading gris" role="tab">';
-    contenido +=                                '<p class="panel-title"><input type="checkbox" class="icheckbox_flat-green checked tictic" checked>';
-    contenido +=                            '<span class="checkpabajo"> ¿Obligatorio responder? </span></span>';
+    contenido +=                            '<div class="gris">'
+
+    contenido +=                            '<div class="form-group col-md-12 col-sm-9 col-xs-12" style="margin-top:10px">'
+    contenido +=                                '<p><input type="checkbox" class="icheckbox_flat-green checked tictic" checked>';
+    contenido +=                                '<span class="type25"> ¿Obligatorio responder? </span>';
+    contenido +=                            '</div>'; 
 
     contenido +=                            '<div class="form-group col-md-6 col-sm-9 col-xs-12">'
     contenido +=                                '<label class="control-label margen">Valor tipo</label>';
@@ -148,9 +142,13 @@ function generapregunta(cont_apartados,n_pregunta){
     contenido +=                                        '<option value="opcion">Seleccionar opción</option>';
     contenido +=                                    '</select>';
     contenido +=                            '</div>';
-    contenido +=                        '<div style="clear:left"></div></br>';
 
-    contenido +=                        '</div>';
+    contenido +=                        '<div style="clear:left"></div>';
+    contenido +=                            '</div>'; 
+
+    contenido +=                        '</br>';
+
+
 
         //genera un bloque de formulario por cada idioma checkeado
         $('#idiomaencuesta').find('input:checked').each(function() {
