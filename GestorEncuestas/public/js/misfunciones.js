@@ -126,26 +126,54 @@ function generapregunta(cont_apartados,n_pregunta){
     contenido +=                            '</div>'; 
 
     contenido +=                            '<div class="form-group col-md-6 col-sm-9 col-xs-12">'
-    contenido +=                                '<label class="control-label margen">Valor tipo</label>';
-    contenido +=                                '<select id="valortipo_A' + cont_apartados + 'P' +  n_pregunta  +  '"class="form-control">';
-    contenido +=                                    '<option value="texto">Datos personales</option>';
-    contenido +=                                    '<option value="calificacion">Estadística</option>';
-    contenido +=                                    '<option value="opcion">Salto de preguntas</option>';
+    contenido +=                                '<label class="control-label margen">Valor de aplicación de la respuesta</label>';
+    contenido +=                                    '<select onchange="activardesactivar(' +  n_pregunta + ',' + cont_apartados + ')" id="valortipo_A' + cont_apartados + 'P' +  n_pregunta  +  '" class="form-control">';
+    contenido +=                                    '<option value="personal">Datos personales</option>';
+    contenido +=                                    '<option value="estadistica">Estadística</option>';
+    contenido +=                                    '<option value="salto">Salto de preguntas</option>';
     contenido +=                                ' </select>';
     contenido +=                            '</div>';   
 
     contenido +=                            '<div class="form-group col-md-6 col-sm-9 col-xs-12">';
-    contenido +=                                '<label class="control-label margen">Pregunta tipo</label>';
-    contenido +=                                    '<select onchange="activardesactivarinput(' +  n_pregunta + ',' + cont_apartados + ')" id="preguntatipo_A' + cont_apartados + 'P' +  n_pregunta  +  '" class="form-control">';
+    contenido +=                                '<label class="control-label margen">Formato de la pregunta </label>';
+    contenido +=                                    '<select onchange="activardesactivar(' +  n_pregunta + ',' + cont_apartados + ')" id="preguntatipo_A' + cont_apartados + 'P' +  n_pregunta  +  '" class="form-control">';
     contenido +=                                        '<option value="texto">Texto libre</option>';
     contenido +=                                        '<option value="calificacion">Calificación</option>';
     contenido +=                                        '<option value="opcion">Seleccionar opción</option>';
     contenido +=                                    '</select>';
     contenido +=                            '</div>';
+    contenido +=                            '<div style="clear:left"></div></br>';
 
-    contenido +=                        '<div style="clear:left"></div>';
+
+    contenido +=                            '<div id="vp_A' + cont_apartados + 'P' +  n_pregunta  + '" class=" form-group col-md-12 col-sm-6 col-xs-6">';
+
+    contenido +=                                '<label id="cajavalores" class="control-label margen">Valor sección</label>';
+
+    contenido +=                                '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
+    contenido +=                                    '<p class="text-center">P1</p>';
+    contenido +=                                    '<input id="vp0" type="text" maxlength="2" class="form-control margen actdesact" disabled>';
+    contenido +=                                '</div>';
+    contenido +=                                '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
+    contenido +=                                    '<p class="text-center">P2</p>';
+    contenido +=                                    '<input id="vp1" type="text" maxlength="2"class="form-control margen actdesact" disabled>';
+    contenido +=                                '</div>';
+    contenido +=                                '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
+    contenido +=                                    '<p class="text-center">P3</p>';
+    contenido +=                                    '<input id="vp2" type="text" maxlength="2"class="form-control margen actdesact eliminar2" disabled>';
+    contenido +=                                '</div>';
+    contenido +=                                '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
+    contenido +=                                    '<p class="text-center">P4</p>';
+    contenido +=                                    '<input id="vp3" type="text" maxlength="2"class="form-control margen actdesact eliminar3" disabled>';
+    contenido +=                                '</div>';
+    contenido +=                                '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
+    contenido +=                                    '<p class="text-center">P5</p>';
+    contenido +=                                    '<input id="vp4" type="text" maxlength="2"class="form-control margen actdesact eliminar4" disabled>';
+    contenido +=                                '</div>';
+
+    contenido +=                            '</div>';
+
+    contenido +=                            '<div style="clear:left"></div>';
     contenido +=                            '</div>'; 
-
     contenido +=                        '</br>';
 
 
@@ -223,18 +251,30 @@ apartadosactuales = 5;
 function nuevarespuesta( n_pregunta, cont_apartados ){
 
     // Comprueba si esta activo el tipo "seleccionar opcion", sino no debe añadir
-    if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion"){
+    if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion" || $('#valortipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "salto"){
 
-        contenido ='<div class="input-group demo2 colorpicker-element">';
+        contenido =   '<div class="input-group demo2 colorpicker-element">';
         contenido +=	'<input type="text" value="" class="form-control actdesact eliminar' + apartadosactuales  + '" placeholder="Escribe aquí otra respuesta">';
         contenido +=    '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',' + apartadosactuales + ')" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
-        contenido +='</div>';
-        
+        contenido +=  '</div>';
+
         $( '#step-' + n_pregunta + '_A' +  cont_apartados ).find('.respuestas').each(function() {
 
             $(this).append(contenido); 
 
         });
+
+        contenido2 =  '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
+        contenido2 +=    '<p class="text-center">P'  + (apartadosactuales+1) + '</p>';
+        contenido2 +=    '<input id="vp'  + apartadosactuales + '" type="text" maxlength="2" class="form-control margen actdesact eliminar' + apartadosactuales + '">';
+        contenido2 += '</div>';
+        
+        $( '#step-' + n_pregunta + '_A' +  cont_apartados ).find('#vp_A' + cont_apartados + 'P' +  n_pregunta).each(function() {
+
+            $(this).append(contenido2); 
+
+        });
+ 
 
         apartadosactuales++;
         
@@ -244,9 +284,15 @@ function nuevarespuesta( n_pregunta, cont_apartados ){
 function eliminarrespuesta( n_pregunta, cont_apartados,div){
     
     // Comprueba si esta activo el tipo "seleccionar opcion", sino no debe eliminar
-    if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion"){
+    if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion" || $('#valortipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "salto"){
    
         $('#step-' + n_pregunta + '_A' + cont_apartados ).find('.respuestas').each(function() {
+		
+            $(this).find('.eliminar' + div).parent().remove() ;
+        
+        }); 
+
+        $('#step-' + n_pregunta + '_A' + cont_apartados ).find('#vp_A' + cont_apartados + 'P' +  n_pregunta).each(function() {
 		
             $(this).find('.eliminar' + div).parent().remove() ;
         
@@ -257,15 +303,20 @@ function eliminarrespuesta( n_pregunta, cont_apartados,div){
 
 //=========================================================================================
 
-//funcion para activar/desactivar inputs
+//funcion para activar/desactivar inputs TIPO OPCION
 
-function activardesactivarinput( n_pregunta, cont_apartados ){
+function activardesactivar( n_pregunta, cont_apartados ){
 
-    if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion"){
+    if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion" || $( '#valortipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "salto"){
 
-        $( '#step-' + n_pregunta + '_A' +  cont_apartados ).find('.actdesact').removeAttr('disabled');   
-    
+        $( '#step-' + n_pregunta + '_A' +  cont_apartados ).find('.actdesact').removeAttr('disabled');//ACTIVAR
+            
     }else{
-        $( '#step-' + n_pregunta + '_A' +  cont_apartados ).find('.actdesact').attr('disabled','');   
+
+        $( '#step-' + n_pregunta + '_A' +  cont_apartados ).find('.actdesact').attr('disabled',''); //DESACTIVAR
+        
     }
 }
+
+
+
