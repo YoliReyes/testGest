@@ -207,21 +207,21 @@ function generapregunta(cont_apartados,n_pregunta){
             contenido +=                                        '<span class="input-group-addon green"><i class="fa fa-plus" style="color:white"></i></span>';
             contenido +=                                    '</div>';
                 
-            contenido +=                                    '<input class="form-control margeninferior actdesact" placeholder="Escribe aquí la respuesta" disabled>';
-            contenido +=                                    '<input class="form-control margeninferior actdesact" placeholder="Escribe aquí la respuesta" disabled></br>';
+            contenido +=                                    '<input class="form-control margeninferior actdesact" placeholder="Escribe aquí la respuesta P1" disabled>';
+            contenido +=                                    '<input class="form-control margeninferior actdesact" placeholder="Escribe aquí la respuesta P2" disabled></br>';
 
             contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
-            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar2" placeholder="Escribe aquí otra respuesta" disabled>';
+            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar2" placeholder="Escribe aquí la respuesta P3" disabled>';
             contenido +=                                        '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',2)" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
             contenido +=                                    '</div>';
 
             contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
-            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar3" placeholder="Escribe aquí otra respuesta" disabled>';
+            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar3" placeholder="Escribe aquí la respuesta P4" disabled>';
             contenido +=                                        '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',3)" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
             contenido +=                                    '</div>';
 
             contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
-            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar4" placeholder="Escribe aquí otra respuesta" disabled>';
+            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar4" placeholder="Escribe aquí la respuesta P5" disabled>';
             contenido +=                                        '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',4)" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
             contenido +=                                    '</div>';
 
@@ -244,7 +244,7 @@ function generapregunta(cont_apartados,n_pregunta){
 
 //=========================================================================================
 
-//funcion para generar/eliminar nuevos input para respuestas ( paso 5 )
+//funciones para generar/eliminar nuevos input para respuestas ( paso 5 )
 
 apartadosactuales = 5;
 
@@ -254,7 +254,7 @@ function nuevarespuesta( n_pregunta, cont_apartados ){
     if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion" || $('#valortipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "salto"){
 
         contenido =   '<div class="input-group demo2 colorpicker-element">';
-        contenido +=	'<input type="text" value="" class="form-control actdesact eliminar' + apartadosactuales  + '" placeholder="Escribe aquí otra respuesta">';
+        contenido +=	'<input type="text" value="" class="form-control actdesact eliminar' + apartadosactuales  + '" placeholder="Escribe aquí la respuesta P' + (apartadosactuales+1) + '">';
         contenido +=    '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',' + apartadosactuales + ')" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
         contenido +=  '</div>';
 
@@ -318,5 +318,39 @@ function activardesactivar( n_pregunta, cont_apartados ){
     }
 }
 
+//=========================================================================================
 
+//PASO FINAL insercción
 
+function onFinishCallback() {
+
+    var encuestas = [];
+    var apartados = [];
+    var preguntas = [];
+    var respuestas = [];
+    
+    var id_encuesta= $(".x_title").find("h2").text().substr(0, 8);
+    var idioma ="";
+    var estado = false;
+    var tituloencuesta = "";
+    var descripcionencuesta = "";
+    var encuesta = ""
+
+    //rellenar array encuestas
+    $('#idiomaencuesta').find('input:checked').each(function() {
+
+        idioma = $(this)[0].id.substr(6, 2);
+
+        if($("#visible:checked").val() == "on"){
+            estado = true;
+        }
+
+        tituloencuesta = $( '#titulo' + idioma ).val();
+        descripcionencuesta = $('#descripcion'+ idioma ).val();
+
+        encuesta = { "id" : id_encuesta ,"titulo" : tituloencuesta, "descripcion": descripcionencuesta, "estado": estado, "idioma" : idioma }; 
+        encuestas.push(encuesta);
+        
+    });
+
+  }

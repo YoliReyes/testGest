@@ -117,7 +117,7 @@
                   </span>
                   </br>
 
-                  <span  class="panel-heading" id="comun" style="background:#CEF6CE">   
+                  <span  class="panel-heading" id="visible" style="background:#CEF6CE">   
                       <p class="panel-title"><input id="visible" type="checkbox"  class="flat"> &nbsp;&nbsp; Estado oculto</p>
                   </span>
                   </br>
@@ -139,13 +139,13 @@
                           
                             <div>
                               <div class="col-md-3 col-sm-6 col-xs-12">
-                                <input id="titulo{{$idioma->id_idioma}}" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12" placeholder="Titulo de Encuesta">
+                                <input id="titulo{{$idioma->id_idioma}}" type="text" required="required" class="form-control col-md-7 col-xs-12" placeholder="Titulo de Encuesta">
                               </div>
                             </div>
 
                             <div>
                               <div class="col-md-9 col-sm-6 col-xs-12">
-                                <input type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12" placeholder="Descripción de Apartado">
+                                <input type="text" id="descripcion{{$idioma->id_idioma}}" name="last-name" required="required" class="form-control col-md-7 col-xs-12" placeholder="Descripción de Apartado">
                               </div>
                             </div> 
                             </br></br>                       
@@ -198,10 +198,9 @@
                   @endforeach
 
                   <div class="form-group col-md-3 col-sm-9 col-xs-12">         
-                    </br>  
+                  VALOR</br>  
                     <input value ="1" type="number" min="1" max="10" id="valor" class="form-control" placeholder="Valor">
                   </div>
-                    
                     <button id="nuevoapartado" type="submit" class="btn btn-success pull-right" style="margin-right:10px;margin-top:18px;">Añadir Apartado</button>
                   <div style="clear: both"></div>
               </div>
@@ -239,7 +238,6 @@
           <!-- End SmartWizard Content -->
        </div>
     </div>
-      
   </div>
   <!-- Div de carga de modals -->
   <div id="modals">
@@ -247,30 +245,12 @@
 
   <!-- /end page content -->
 
+<!--================================================================================================-->
 
   <!-- form wizard -->
   <script type="text/javascript" src="js/wizard/jquery.smartWizard.js"></script>
   <!-- pace -->
   <script src="js/pace/pace.min.js"></script>
-  <script type="text/javascript">
-    $(document).ready(function() {
-      // Smart Wizard
-      $('#wizard').smartWizard();
-
-      function onFinishCallback() {
-        $('#wizard').smartWizard('showMessage', 'Finish Clicked');
-        //alert('Finish Clicked');
-      }
-    });
-
-    $(document).ready(function() {
-      // Smart Wizard
-      $('#wizard_verticle').smartWizard({
-        transitionEffect: 'slide'
-      });
-    });
-   
-  </script>
-
+  
 
 @stop()

@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-04-2018 a las 14:08:25
--- Versión del servidor: 5.7.21-0ubuntu0.16.04.1
--- Versión de PHP: 7.0.28-0ubuntu0.16.04.1
+-- Tiempo de generación: 25-05-2018 a las 15:31:14
+-- Versión del servidor: 5.7.22-0ubuntu0.16.04.1
+-- Versión de PHP: 7.0.30-0ubuntu0.16.04.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -42,8 +42,8 @@ CREATE TABLE `apartados` (
 --
 
 INSERT INTO `apartados` (`id_apartado`, `titulo_apartado`, `descripcion_apartado`, `valor_porcentaje_apartado`, `comun`, `idioma`, `created_at`, `updated_at`) VALUES
-(1, 'Información General', 'En esta sección nos gustaría acceder a los datos principales de la empresa y el perfil de la persona que va a responder este cuestionario.', 0, 1, 'es', NULL, NULL),
-(2, 'Simbiosis industrial', 'Esta sección se refiere a la relación que la empresa establece con la empresa del sector o la zona para reducir el impacto ambiental.', 20, 0, 'es', NULL, NULL);
+(1, 'Información General', 'En esta sección nos gustaría acceder a los datos principales de la empresa y el perfil de la persona que va a responder este cuestionario.', 0, 1, 'en', NULL, NULL),
+(2, 'Simbiosis industrial', 'Esta sección se refiere a la relación que la empresa establece con la empresa del sector o la zona para reducir el impacto ambiental.', 20, 0, 'en', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -58,15 +58,27 @@ CREATE TABLE `encuestas` (
   `estado_encuesta` tinyint(1) NOT NULL DEFAULT '0',
   `idioma` varchar(3) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'es',
   `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `clave_encuesta` varchar(8) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `encuestas`
 --
 
-INSERT INTO `encuestas` (`id_encuesta`, `titulo_encuesta`, `descripion_encuesta`, `estado_encuesta`, `idioma`, `created_at`, `updated_at`) VALUES
-(1, 'Encuesta de prueba', 'Esto es una encuesta de prueba', 0, 'es', NULL, NULL);
+INSERT INTO `encuestas` (`id_encuesta`, `titulo_encuesta`, `descripion_encuesta`, `estado_encuesta`, `idioma`, `created_at`, `updated_at`, `clave_encuesta`) VALUES
+(1, 'Encuesta de prueba', 'Esto es una encuesta de prueba', 1, 'en', '2018-04-17 22:00:00', '2018-04-25 22:00:00', 'ENC_0002'),
+(2, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'es', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0001'),
+(4, 'the same', 'the same but in english', 0, 'es', '2018-04-04 22:00:00', '2018-04-12 22:00:00', 'ENC_0002'),
+(5, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'en', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0001'),
+(6, 'Encuesta de prueba', 'Esto es una encuesta de prueba', 1, 'en', '2018-04-17 22:00:00', '2018-04-25 22:00:00', 'ENC_0003'),
+(7, 'the same', 'the same but in english', 0, 'es', '2018-04-04 22:00:00', '2018-04-12 22:00:00', 'ENC_0004'),
+(8, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'es', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0003'),
+(9, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'en', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0004'),
+(10, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'es', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0005'),
+(11, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'en', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0005'),
+(12, 'Encuesta de prueba', 'Esto es una encuesta de prueba', 1, 'en', '2018-04-17 22:00:00', '2018-04-25 22:00:00', 'ENC_0006'),
+(13, 'the same', 'the same but in english', 0, 'es', '2018-04-04 22:00:00', '2018-04-12 22:00:00', 'ENC_0006');
 
 -- --------------------------------------------------------
 
@@ -96,8 +108,9 @@ INSERT INTO `encuestas_apartados` (`id_encuesta_rel`, `id_apartado_rel`, `create
 --
 
 CREATE TABLE `idiomas` (
-  `id_idioma` varchar(3) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `descripcion` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `id_orden` int(11) NOT NULL,
+  `id_idioma` varchar(3) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
+  `descripcion` varchar(30) CHARACTER SET utf8 COLLATE utf8_spanish_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -106,9 +119,11 @@ CREATE TABLE `idiomas` (
 -- Volcado de datos para la tabla `idiomas`
 --
 
-INSERT INTO `idiomas` (`id_idioma`, `descripcion`, `created_at`, `updated_at`) VALUES
-('en', 'Ingles', NULL, NULL),
-('es', 'Español', NULL, NULL);
+INSERT INTO `idiomas` (`id_orden`, `id_idioma`, `descripcion`, `created_at`, `updated_at`) VALUES
+(3, 'de', 'ALEMÁN', NULL, NULL),
+(1, 'en', 'INGLES', NULL, NULL),
+(0, 'es', 'ESPAÑOL', NULL, NULL),
+(2, 'fr', 'FRANCES', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -135,9 +150,9 @@ CREATE TABLE `preguntas` (
 --
 
 INSERT INTO `preguntas` (`id_pregunta`, `id_apart_pregunta`, `tipo_respuesta`, `obligatorio`, `enunciado`, `Comentario`, `tipoDato`, `valor_porcentaje_pregunta`, `idioma`, `created_at`, `updated_at`) VALUES
-(1, 1, 'texto', 1, 'Nombre Empresa', NULL, 'personal', 0, 'es', NULL, NULL),
-(2, 1, 'opcion', 1, 'Comunidad autónoma', 'Si su empresa está fuera de España, esriba su ubicación al final', 'personal', 0, 'es', NULL, NULL),
-(3, 1, 'opcion', 1, 'Cargo en la organización', 'Marca solo una opción', 'personal', 0, 'es', NULL, NULL);
+(1, 1, 'texto', 1, 'Nombre Empresa', NULL, 'personal', 0, 'en', NULL, NULL),
+(2, 1, 'opcion', 1, 'Comunidad autónoma', 'Si su empresa está fuera de España, esriba su ubicación al final', 'personal', 0, 'en', NULL, NULL),
+(3, 1, 'opcion', 1, 'Cargo en la organización', 'Marca solo una opción', 'personal', 0, 'en', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -162,8 +177,8 @@ CREATE TABLE `recomendaciones` (
 --
 
 INSERT INTO `recomendaciones` (`id_recomendacion`, `id_pregunta_recomendacion`, `sector`, `recomendacion`, `max`, `min`, `idioma`, `created_at`, `updated_at`) VALUES
-(1, 3, 'Educación', 'El resultado obtenido en la sección corresponde a una actuación media. Revise el impacto medioambiental.', 5, 0, 'es', NULL, NULL),
-(2, 3, 'Construcción', 'El resultado obtenido en la sección corresponde a una actuación alta. Enhorabuena.', 10, 6, 'es', NULL, NULL);
+(1, 3, 'Educación', 'El resultado obtenido en la sección corresponde a una actuación media. Revise el impacto medioambiental.', 5, 0, 'en', NULL, NULL),
+(2, 3, 'Construcción', 'El resultado obtenido en la sección corresponde a una actuación alta. Enhorabuena.', 10, 6, 'en', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -186,11 +201,11 @@ CREATE TABLE `respuestas_tipo_opcionals` (
 --
 
 INSERT INTO `respuestas_tipo_opcionals` (`id_resp_opt`, `id_preg_resp`, `texto_respuesta`, `valor_unidad`, `idioma`, `created_at`, `updated_at`) VALUES
-(1, 3, 'Responsable de Gestión', 0, 'es', NULL, NULL),
-(2, 3, 'Gerente', 0, 'es', NULL, NULL),
-(3, 3, 'Cargos de dirección y afines', 0, 'es', NULL, NULL),
-(4, 3, 'Analista y afines', 0, 'es', NULL, NULL),
-(5, 3, 'Otras areas', 0, 'es', NULL, NULL);
+(1, 3, 'Responsable de Gestión', 0, 'en', NULL, NULL),
+(2, 3, 'Gerente', 0, 'en', NULL, NULL),
+(3, 3, 'Cargos de dirección y afines', 0, 'en', NULL, NULL),
+(4, 3, 'Analista y afines', 0, 'en', NULL, NULL),
+(5, 3, 'Otras areas', 0, 'en', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -224,19 +239,25 @@ INSERT INTO `respuestas_usuarios` (`id_Usuario`, `id_preg_usuario`, `respuesta_s
 -- Indices de la tabla `apartados`
 --
 ALTER TABLE `apartados`
-  ADD PRIMARY KEY (`id_apartado`);
+  ADD PRIMARY KEY (`id_apartado`),
+  ADD KEY `idioma` (`idioma`);
 
 --
 -- Indices de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  ADD PRIMARY KEY (`id_encuesta`);
+  ADD PRIMARY KEY (`id_encuesta`,`idioma`),
+  ADD UNIQUE KEY `id_encuesta_2` (`id_encuesta`),
+  ADD KEY `idioma` (`idioma`),
+  ADD KEY `id_encuesta` (`id_encuesta`),
+  ADD KEY `id_encuesta_3` (`id_encuesta`);
 
 --
 -- Indices de la tabla `encuestas_apartados`
 --
 ALTER TABLE `encuestas_apartados`
-  ADD KEY `encuestas_apartados_id_encuesta_rel_id_apartado_rel_index` (`id_encuesta_rel`,`id_apartado_rel`);
+  ADD KEY `encuestas_apartados_id_encuesta_rel_id_apartado_rel_index` (`id_encuesta_rel`,`id_apartado_rel`),
+  ADD KEY `id_apartado_rel` (`id_apartado_rel`);
 
 --
 -- Indices de la tabla `idiomas`
@@ -249,7 +270,8 @@ ALTER TABLE `idiomas`
 --
 ALTER TABLE `preguntas`
   ADD PRIMARY KEY (`id_pregunta`),
-  ADD KEY `preguntas_id_apart_pregunta_id_pregunta_index` (`id_apart_pregunta`,`id_pregunta`);
+  ADD KEY `preguntas_id_apart_pregunta_id_pregunta_index` (`id_apart_pregunta`,`id_pregunta`),
+  ADD KEY `idioma` (`idioma`);
 
 --
 -- Indices de la tabla `recomendaciones`
@@ -257,15 +279,17 @@ ALTER TABLE `preguntas`
 ALTER TABLE `recomendaciones`
   ADD PRIMARY KEY (`id_recomendacion`),
   ADD KEY `recomendaciones_id_pregunta_recomendacion_foreign` (`id_pregunta_recomendacion`),
-  ADD KEY `recomendaciones_id_recomendacion_id_pregunta_recomendacion_index` (`id_recomendacion`,`id_pregunta_recomendacion`);
+  ADD KEY `recomendaciones_id_recomendacion_id_pregunta_recomendacion_index` (`id_recomendacion`,`id_pregunta_recomendacion`),
+  ADD KEY `idioma` (`idioma`);
 
 --
 -- Indices de la tabla `respuestas_tipo_opcionals`
 --
 ALTER TABLE `respuestas_tipo_opcionals`
   ADD PRIMARY KEY (`id_resp_opt`),
-  ADD KEY `respuestas_tipo_opcionals_id_preg_resp_foreign` (`id_preg_resp`),
-  ADD KEY `respuestas_tipo_opcionals_id_resp_opt_id_preg_resp_index` (`id_resp_opt`,`id_preg_resp`);
+  ADD KEY `respuestas_tipo_opcionals_id_resp_opt_id_preg_resp_index` (`id_resp_opt`,`id_preg_resp`),
+  ADD KEY `idioma` (`idioma`),
+  ADD KEY `respuestas_tipo_opcionals_id_preg_resp_foreign` (`id_preg_resp`);
 
 --
 -- Indices de la tabla `respuestas_usuarios`
@@ -287,7 +311,7 @@ ALTER TABLE `apartados`
 -- AUTO_INCREMENT de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  MODIFY `id_encuesta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_encuesta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
@@ -308,28 +332,50 @@ ALTER TABLE `respuestas_tipo_opcionals`
 --
 
 --
+-- Filtros para la tabla `apartados`
+--
+ALTER TABLE `apartados`
+  ADD CONSTRAINT `apartados_ibfk_1` FOREIGN KEY (`idioma`) REFERENCES `idiomas` (`id_idioma`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `encuestas`
+--
+ALTER TABLE `encuestas`
+  ADD CONSTRAINT `encuestas_ibfk_1` FOREIGN KEY (`idioma`) REFERENCES `idiomas` (`id_idioma`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Filtros para la tabla `encuestas_apartados`
+--
+ALTER TABLE `encuestas_apartados`
+  ADD CONSTRAINT `encuestas_apartados_ibfk_1` FOREIGN KEY (`id_encuesta_rel`) REFERENCES `encuestas` (`id_encuesta`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `encuestas_apartados_ibfk_2` FOREIGN KEY (`id_apartado_rel`) REFERENCES `apartados` (`id_apartado`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
 -- Filtros para la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  ADD CONSTRAINT `preguntas_id_apart_pregunta_foreign` FOREIGN KEY (`id_apart_pregunta`) REFERENCES `apartados` (`id_apartado`) ON DELETE CASCADE;
+  ADD CONSTRAINT `preguntas_ibfk_1` FOREIGN KEY (`idioma`) REFERENCES `idiomas` (`id_idioma`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `preguntas_id_apart_pregunta_foreign` FOREIGN KEY (`id_apart_pregunta`) REFERENCES `apartados` (`id_apartado`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `recomendaciones`
 --
 ALTER TABLE `recomendaciones`
+  ADD CONSTRAINT `recomendaciones_ibfk_1` FOREIGN KEY (`idioma`) REFERENCES `idiomas` (`id_idioma`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `recomendaciones_id_pregunta_recomendacion_foreign` FOREIGN KEY (`id_pregunta_recomendacion`) REFERENCES `preguntas` (`id_pregunta`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `respuestas_tipo_opcionals`
 --
 ALTER TABLE `respuestas_tipo_opcionals`
-  ADD CONSTRAINT `respuestas_tipo_opcionals_id_preg_resp_foreign` FOREIGN KEY (`id_preg_resp`) REFERENCES `preguntas` (`id_pregunta`) ON DELETE CASCADE;
+  ADD CONSTRAINT `respuestas_tipo_opcionals_ibfk_1` FOREIGN KEY (`idioma`) REFERENCES `idiomas` (`id_idioma`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `respuestas_tipo_opcionals_id_preg_resp_foreign` FOREIGN KEY (`id_preg_resp`) REFERENCES `preguntas` (`id_pregunta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `respuestas_usuarios`
 --
 ALTER TABLE `respuestas_usuarios`
-  ADD CONSTRAINT `respuestas_usuarios_id_pregunta_resp_usuario_foreign` FOREIGN KEY (`id_preg_usuario`) REFERENCES `preguntas` (`id_pregunta`) ON DELETE CASCADE;
+  ADD CONSTRAINT `respuestas_usuarios_id_pregunta_resp_usuario_foreign` FOREIGN KEY (`id_preg_usuario`) REFERENCES `preguntas` (`id_pregunta`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

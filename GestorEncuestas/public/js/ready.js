@@ -103,8 +103,15 @@ $(document).ready(function() {
 
 //=========================================================================================
 
+	// Smart Wizard
+	$('#wizard').smartWizard({
+		onFinish: onFinishCallback
+	});
 
-
+	$('#wizard_verticle').smartWizard({
+		transitionEffect: 'slide'
+	});
+	
 });
 
 

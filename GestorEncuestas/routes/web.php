@@ -11,13 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return 'login';
-});
+});*/
 
-Route::get('prueba', function () {
-    return view ('prueba');
-});
 
 Route::get('/gestionarencuestas', 'controlador@cargaTablaInicial');
 
@@ -26,6 +23,8 @@ Route::get('/iniciocrearencuesta', 'controlador@iniciocrearencuesta');
 Route::get('/iniciogestionarresultados', 'controlador@iniciogestionarresultados');
 
 
-
+Route::get('/insertardatos', function () {
+    return 'insertando';
+});
 
 
