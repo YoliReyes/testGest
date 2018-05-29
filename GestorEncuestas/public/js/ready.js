@@ -62,8 +62,8 @@ $(document).ready(function() {
 					
 					modalPaso4 = generaHTMLmodal(cont_apartados);    	
 
-					//añade html div paso3
-					contenidoPaso3 += "<p id='" + nuevoid + "'><strong>" + idioma + " | " + titulo + "</strong> - " + descripcion + ".</p>";
+					//añade html div paso3(cerramos alert)
+					contenidoPaso3 += "<p id='" + nuevoid + "' class='apartado'><strong id='idiomaA'>" + idioma + "</strong> | <strong id='tituloA'>" + titulo + "</strong> - <span id='descripcionA'>" + descripcion + "</span>.</p>";
 					
 					//añade texto titulo al html div paso4
 					if(idioma=="ES"){

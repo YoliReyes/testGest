@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 25-05-2018 a las 15:31:14
+-- Tiempo de generación: 29-05-2018 a las 15:25:23
 -- Versión del servidor: 5.7.22-0ubuntu0.16.04.1
 -- Versión de PHP: 7.0.30-0ubuntu0.16.04.1
 
@@ -28,6 +28,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `apartados` (
   `id_apartado` int(10) UNSIGNED NOT NULL,
+  `clave_encuesta` varchar(8) COLLATE utf8_spanish_ci NOT NULL,
   `titulo_apartado` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
   `descripcion_apartado` text COLLATE utf8_spanish_ci NOT NULL,
   `valor_porcentaje_apartado` int(10) UNSIGNED NOT NULL DEFAULT '0',
@@ -36,14 +37,6 @@ CREATE TABLE `apartados` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `apartados`
---
-
-INSERT INTO `apartados` (`id_apartado`, `titulo_apartado`, `descripcion_apartado`, `valor_porcentaje_apartado`, `comun`, `idioma`, `created_at`, `updated_at`) VALUES
-(1, 'Información General', 'En esta sección nos gustaría acceder a los datos principales de la empresa y el perfil de la persona que va a responder este cuestionario.', 0, 1, 'en', NULL, NULL),
-(2, 'Simbiosis industrial', 'Esta sección se refiere a la relación que la empresa establece con la empresa del sector o la zona para reducir el impacto ambiental.', 20, 0, 'en', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -62,24 +55,6 @@ CREATE TABLE `encuestas` (
   `clave_encuesta` varchar(8) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `encuestas`
---
-
-INSERT INTO `encuestas` (`id_encuesta`, `titulo_encuesta`, `descripion_encuesta`, `estado_encuesta`, `idioma`, `created_at`, `updated_at`, `clave_encuesta`) VALUES
-(1, 'Encuesta de prueba', 'Esto es una encuesta de prueba', 1, 'en', '2018-04-17 22:00:00', '2018-04-25 22:00:00', 'ENC_0002'),
-(2, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'es', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0001'),
-(4, 'the same', 'the same but in english', 0, 'es', '2018-04-04 22:00:00', '2018-04-12 22:00:00', 'ENC_0002'),
-(5, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'en', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0001'),
-(6, 'Encuesta de prueba', 'Esto es una encuesta de prueba', 1, 'en', '2018-04-17 22:00:00', '2018-04-25 22:00:00', 'ENC_0003'),
-(7, 'the same', 'the same but in english', 0, 'es', '2018-04-04 22:00:00', '2018-04-12 22:00:00', 'ENC_0004'),
-(8, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'es', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0003'),
-(9, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'en', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0004'),
-(10, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'es', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0005'),
-(11, 'Estado de instalaciones', 'Queremos saber cómo está su instalación eléctrica.', 0, 'en', '2018-04-17 22:00:00', '2018-04-22 22:00:00', 'ENC_0005'),
-(12, 'Encuesta de prueba', 'Esto es una encuesta de prueba', 1, 'en', '2018-04-17 22:00:00', '2018-04-25 22:00:00', 'ENC_0006'),
-(13, 'the same', 'the same but in english', 0, 'es', '2018-04-04 22:00:00', '2018-04-12 22:00:00', 'ENC_0006');
-
 -- --------------------------------------------------------
 
 --
@@ -92,14 +67,6 @@ CREATE TABLE `encuestas_apartados` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `encuestas_apartados`
---
-
-INSERT INTO `encuestas_apartados` (`id_encuesta_rel`, `id_apartado_rel`, `created_at`, `updated_at`) VALUES
-(1, 1, NULL, NULL),
-(1, 2, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -120,10 +87,8 @@ CREATE TABLE `idiomas` (
 --
 
 INSERT INTO `idiomas` (`id_orden`, `id_idioma`, `descripcion`, `created_at`, `updated_at`) VALUES
-(3, 'de', 'ALEMÁN', NULL, NULL),
 (1, 'en', 'INGLES', NULL, NULL),
-(0, 'es', 'ESPAÑOL', NULL, NULL),
-(2, 'fr', 'FRANCES', NULL, NULL);
+(0, 'es', 'ESPAÑOL', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -145,15 +110,6 @@ CREATE TABLE `preguntas` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `preguntas`
---
-
-INSERT INTO `preguntas` (`id_pregunta`, `id_apart_pregunta`, `tipo_respuesta`, `obligatorio`, `enunciado`, `Comentario`, `tipoDato`, `valor_porcentaje_pregunta`, `idioma`, `created_at`, `updated_at`) VALUES
-(1, 1, 'texto', 1, 'Nombre Empresa', NULL, 'personal', 0, 'en', NULL, NULL),
-(2, 1, 'opcion', 1, 'Comunidad autónoma', 'Si su empresa está fuera de España, esriba su ubicación al final', 'personal', 0, 'en', NULL, NULL),
-(3, 1, 'opcion', 1, 'Cargo en la organización', 'Marca solo una opción', 'personal', 0, 'en', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -172,14 +128,6 @@ CREATE TABLE `recomendaciones` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `recomendaciones`
---
-
-INSERT INTO `recomendaciones` (`id_recomendacion`, `id_pregunta_recomendacion`, `sector`, `recomendacion`, `max`, `min`, `idioma`, `created_at`, `updated_at`) VALUES
-(1, 3, 'Educación', 'El resultado obtenido en la sección corresponde a una actuación media. Revise el impacto medioambiental.', 5, 0, 'en', NULL, NULL),
-(2, 3, 'Construcción', 'El resultado obtenido en la sección corresponde a una actuación alta. Enhorabuena.', 10, 6, 'en', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -196,17 +144,6 @@ CREATE TABLE `respuestas_tipo_opcionals` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
---
--- Volcado de datos para la tabla `respuestas_tipo_opcionals`
---
-
-INSERT INTO `respuestas_tipo_opcionals` (`id_resp_opt`, `id_preg_resp`, `texto_respuesta`, `valor_unidad`, `idioma`, `created_at`, `updated_at`) VALUES
-(1, 3, 'Responsable de Gestión', 0, 'en', NULL, NULL),
-(2, 3, 'Gerente', 0, 'en', NULL, NULL),
-(3, 3, 'Cargos de dirección y afines', 0, 'en', NULL, NULL),
-(4, 3, 'Analista y afines', 0, 'en', NULL, NULL),
-(5, 3, 'Otras areas', 0, 'en', NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -221,15 +158,6 @@ CREATE TABLE `respuestas_usuarios` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `respuestas_usuarios`
---
-
-INSERT INTO `respuestas_usuarios` (`id_Usuario`, `id_preg_usuario`, `respuesta_seleccionada`, `puntuacion_obtenida`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Spyro', 0, NULL, NULL),
-(1, 2, 'Gerente', 0, NULL, NULL),
-(1, 3, 'País Vasco', 0, NULL, NULL);
 
 --
 -- Índices para tablas volcadas

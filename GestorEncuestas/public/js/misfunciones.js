@@ -38,7 +38,7 @@ function generaHTMLpaso3(cont_apartados,valor){
     contenido = '<div class="alert alert-success alert-dismissible fade in" role="alert">';
     contenido += '<button onclick = "$(\'#apartado' + cont_apartados + '_paso4\').remove();" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>';
     contenido += '<p><strong class="textosemidestacado"> APARTADO ' + cont_apartados + ' </strong></p>';
-    contenido += '<p><strong><span id="valor">[ ' + valor + '</span> puntos ] </strong> ( Valor Respecto al total de la encuesta ).</p></br>';
+    contenido += '<p><strong>[ <span id="valorapartado">' + valor + '</span> puntos ] </strong> ( Valor Respecto al total de la encuesta ).</p></br>';
 
     return contenido;
 }
@@ -127,7 +127,7 @@ function generapregunta(cont_apartados,n_pregunta){
 
     contenido +=                            '<div class="form-group col-md-6 col-sm-9 col-xs-12">'
     contenido +=                                '<label class="control-label margen">Valor de aplicación de la respuesta</label>';
-    contenido +=                                    '<select onchange="activardesactivar(' +  n_pregunta + ',' + cont_apartados + ')" id="valortipo_A' + cont_apartados + 'P' +  n_pregunta  +  '" class="form-control">';
+    contenido +=                                    '<select onchange="activardesactivar(' +  n_pregunta + ',' + cont_apartados + ')" id="valortipo_A' + cont_apartados + 'P' +  n_pregunta  +  '" class="form-control valortipo">';
     contenido +=                                    '<option value="personal">Datos personales</option>';
     contenido +=                                    '<option value="estadistica">Estadística</option>';
     contenido +=                                    '<option value="salto">Salto de preguntas</option>';
@@ -136,7 +136,7 @@ function generapregunta(cont_apartados,n_pregunta){
 
     contenido +=                            '<div class="form-group col-md-6 col-sm-9 col-xs-12">';
     contenido +=                                '<label class="control-label margen">Formato de la pregunta </label>';
-    contenido +=                                    '<select onchange="activardesactivar(' +  n_pregunta + ',' + cont_apartados + ')" id="preguntatipo_A' + cont_apartados + 'P' +  n_pregunta  +  '" class="form-control">';
+    contenido +=                                    '<select onchange="activardesactivar(' +  n_pregunta + ',' + cont_apartados + ')" id="preguntatipo_A' + cont_apartados + 'P' +  n_pregunta  +  '" class="form-control preguntatipo">';
     contenido +=                                        '<option value="texto">Texto libre</option>';
     contenido +=                                        '<option value="calificacion">Calificación</option>';
     contenido +=                                        '<option value="opcion">Seleccionar opción</option>';
@@ -147,26 +147,31 @@ function generapregunta(cont_apartados,n_pregunta){
 
     contenido +=                            '<div id="vp_A' + cont_apartados + 'P' +  n_pregunta  + '" class=" form-group col-md-12 col-sm-6 col-xs-6">';
 
-    contenido +=                                '<label id="cajavalores" class="control-label margen">Valor sección</label>';
+    contenido +=                                '<label id="cajavalores" class="control-label margen">Valores</label>';
 
     contenido +=                                '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
-    contenido +=                                    '<p class="text-center">P1</p>';
+    contenido +=                                    '<p class="text-center">Total</p>';
+    contenido +=                                    '<input id="vpgeneral" type="text" maxlength="2" class="form-control margen valorpregunta">';
+    contenido +=                                '</div>';
+
+    contenido +=                                '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
+    contenido +=                                    '<p class="text-center">R1</p>';
     contenido +=                                    '<input id="vp0" type="text" maxlength="2" class="form-control margen actdesact" disabled>';
     contenido +=                                '</div>';
     contenido +=                                '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
-    contenido +=                                    '<p class="text-center">P2</p>';
+    contenido +=                                    '<p class="text-center">R2</p>';
     contenido +=                                    '<input id="vp1" type="text" maxlength="2"class="form-control margen actdesact" disabled>';
     contenido +=                                '</div>';
     contenido +=                                '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
-    contenido +=                                    '<p class="text-center">P3</p>';
+    contenido +=                                    '<p class="text-center">R3</p>';
     contenido +=                                    '<input id="vp2" type="text" maxlength="2"class="form-control margen actdesact eliminar2" disabled>';
     contenido +=                                '</div>';
     contenido +=                                '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
-    contenido +=                                    '<p class="text-center">P4</p>';
+    contenido +=                                    '<p class="text-center">R4</p>';
     contenido +=                                    '<input id="vp3" type="text" maxlength="2"class="form-control margen actdesact eliminar3" disabled>';
     contenido +=                                '</div>';
     contenido +=                                '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
-    contenido +=                                    '<p class="text-center">P5</p>';
+    contenido +=                                    '<p class="text-center">R5</p>';
     contenido +=                                    '<input id="vp4" type="text" maxlength="2"class="form-control margen actdesact eliminar4" disabled>';
     contenido +=                                '</div>';
 
@@ -183,7 +188,7 @@ function generapregunta(cont_apartados,n_pregunta){
 
             tituloidioma = $(this).parent().parent().find('#idencuestaidioma').text();
 
-            contenido +=                        '<hr/><div id="idioma">';//inicio bloque idioma
+            contenido +=                        '<hr/><div id="idioma" class="idiomapregunta">';//inicio bloque idioma
             contenido +=                            '<h4>&nbsp;&nbsp;' + tituloidioma + '</h4><hr/>';
 
             contenido +=                            '<div class="col-md-6 col-sm-9 col-xs-12">'
@@ -207,21 +212,21 @@ function generapregunta(cont_apartados,n_pregunta){
             contenido +=                                        '<span class="input-group-addon green"><i class="fa fa-plus" style="color:white"></i></span>';
             contenido +=                                    '</div>';
                 
-            contenido +=                                    '<input class="form-control margeninferior actdesact" placeholder="Escribe aquí la respuesta P1" disabled>';
-            contenido +=                                    '<input class="form-control margeninferior actdesact" placeholder="Escribe aquí la respuesta P2" disabled></br>';
+            contenido +=                                    '<input class="form-control margeninferior actdesact" placeholder="Escribe aquí la respuesta R1" disabled>';
+            contenido +=                                    '<input class="form-control margeninferior actdesact" placeholder="Escribe aquí la respuesta R2" disabled></br>';
 
             contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
-            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar2" placeholder="Escribe aquí la respuesta P3" disabled>';
+            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar2" placeholder="Escribe aquí la respuesta R3" disabled>';
             contenido +=                                        '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',2)" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
             contenido +=                                    '</div>';
 
             contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
-            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar3" placeholder="Escribe aquí la respuesta P4" disabled>';
+            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar3" placeholder="Escribe aquí la respuesta R4" disabled>';
             contenido +=                                        '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',3)" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
             contenido +=                                    '</div>';
 
             contenido +=                                    '<div class="input-group demo2 colorpicker-element">';
-            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar4" placeholder="Escribe aquí la respuesta P5" disabled>';
+            contenido +=                                        '<input type="text" value="" class="form-control actdesact eliminar4" placeholder="Escribe aquí la respuesta R5" disabled>';
             contenido +=                                        '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',4)" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
             contenido +=                                    '</div>';
 
@@ -254,7 +259,7 @@ function nuevarespuesta( n_pregunta, cont_apartados ){
     if( $( '#preguntatipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "opcion" || $('#valortipo_A' + cont_apartados  + 'P' + n_pregunta ).val() == "salto"){
 
         contenido =   '<div class="input-group demo2 colorpicker-element">';
-        contenido +=	'<input type="text" value="" class="form-control actdesact eliminar' + apartadosactuales  + '" placeholder="Escribe aquí la respuesta P' + (apartadosactuales+1) + '">';
+        contenido +=	'<input type="text" value="" class="form-control actdesact eliminar' + apartadosactuales  + '" placeholder="Escribe aquí la respuesta R' + (apartadosactuales+1) + '">';
         contenido +=    '<span onclick="eliminarrespuesta(' + n_pregunta + ',' + cont_apartados + ',' + apartadosactuales + ')" class="input-group-addon"><i class="fa fa-close" style="color:red"></i></span>';
         contenido +=  '</div>';
 
@@ -265,7 +270,7 @@ function nuevarespuesta( n_pregunta, cont_apartados ){
         });
 
         contenido2 =  '<div class=" form-group col-md-1 col-sm-6 col-xs-6">';
-        contenido2 +=    '<p class="text-center">P'  + (apartadosactuales+1) + '</p>';
+        contenido2 +=    '<p class="text-center">R'  + (apartadosactuales+1) + '</p>';
         contenido2 +=    '<input id="vp'  + apartadosactuales + '" type="text" maxlength="2" class="form-control margen actdesact eliminar' + apartadosactuales + '">';
         contenido2 += '</div>';
         
@@ -324,33 +329,126 @@ function activardesactivar( n_pregunta, cont_apartados ){
 
 function onFinishCallback() {
 
+    var idiomas = [];
     var encuestas = [];
     var apartados = [];
     var preguntas = [];
     var respuestas = [];
     
     var id_encuesta= $(".x_title").find("h2").text().substr(0, 8);
-    var idioma ="";
     var estado = false;
+    var comun = false;
+
+    if($("#visible:checked").val() == "on"){
+        estado = true;
+    }
+
+    if($("#comun:checked").val() == "on"){
+        estado = true;
+    }
+
+    //TABLA ENCUESTA----------------------------------------------------
+
+    var idioma ="";
     var tituloencuesta = "";
     var descripcionencuesta = "";
-    var encuesta = ""
+    var encuesta = "";
 
-    //rellenar array encuestas
     $('#idiomaencuesta').find('input:checked').each(function() {
 
         idioma = $(this)[0].id.substr(6, 2);
-
-        if($("#visible:checked").val() == "on"){
-            estado = true;
-        }
+        idiomas.push(idioma);
 
         tituloencuesta = $( '#titulo' + idioma ).val();
         descripcionencuesta = $('#descripcion'+ idioma ).val();
 
-        encuesta = { "id" : id_encuesta ,"titulo" : tituloencuesta, "descripcion": descripcionencuesta, "estado": estado, "idioma" : idioma }; 
-        encuestas.push(encuesta);
-        
+        //rellenamos array encuestas para posterior envio e inserción en base de datos        
+        encuesta = { "titulo" : tituloencuesta, "descripcion": descripcionencuesta, "estado": estado, "idioma" : idioma, "clave" : id_encuesta }; 
+        encuestas.push(encuesta); 
+    
     });
+
+    //FIN TABLA ENCUESTA------------------------------------------------
+
+   
+
+    //TABLA APARTADOS---------------------------------------------------
+
+    var idiomaapartado ="";
+    var tituloapartado = "";
+    var descripcionapartado = "";
+    var valorapartado = "";
+    var napartado=1;
+   
+    $('#apartados').find('.alert').each(function() { 
+
+        valorapartado = $(this).find('#valorapartado').text();
+
+        $(this).find('.apartado').each(function() { 
+
+            idiomaapartado = $(this).find('#idiomaA').text().toLowerCase();
+            tituloapartado = $(this).find('#tituloA').text();
+            descripcionapartado = $(this).find('#descripcionA').text();
+
+            apartado = { "claveencuesta" : id_encuesta,"napartado": napartado, "titulo" : tituloapartado, "descripcion": descripcionapartado, "valor": valorapartado, "comun": comun, "idioma" : idiomaapartado }; 
+            apartados.push(apartado);   
+        });
+        napartado ++;
+    });
+
+    //FIN TABLA APARTADOS-----------------------------------------------
+
+    //TABLA PREGUNTAS---------------------------------------------------
+    var apartadopregunta = 1;
+
+    var obligatorio = "";
+    var formatopregunta = "";
+    var tiporespuesta = "";
+
+    var enunciadopregunta ="";
+    var comentariopregunta ="";
+    var valorpregunta ="";
+    var idiomapregunta ="";
+
+    $('#modals').find('.modal').each(function() { //cada modal equivale a un apartado
+        
+        var npregunta = 1;
+
+        $(this).find('.panelpreguntas').each(function() { //cada .panelpreguntas equivale a un bloque de pregunta
+            
+            idiomarot = 0;
+
+            obligatorio = $(this).find('.tictic')[0].checked;
+            formatopregunta = $(this).find('.preguntatipo').val();
+            tiporespuesta = $(this).find('.valortipo').val();
+            valorpregunta = $(this).find('.valorpregunta').val();
+            
+
+            $(this).find('.idiomapregunta').each(function() {// .idiomapregunta equivale a un bloque de idioma
+
+                idiomapregunta =idiomas[idiomarot]; 
+                enunciadopregunta = $(this).find('textarea')[0].value;
+                comentariopregunta = $(this).find('textarea')[1].value;
+
+                pregunta = { "apartado" : apartadopregunta ,"npregunta": npregunta, "formatopregunta": formatopregunta, "obligatorio" : obligatorio, "enunciado": enunciadopregunta,"comentario":comentariopregunta,"tiporespuesta": tiporespuesta, "valor": valorpregunta, "idioma" : idiomapregunta }; 
+                preguntas.push(pregunta); 
+
+                idiomarot ++;
+            });
+
+            npregunta ++;
+        });
+
+        apartadopregunta ++;
+    });
+    //FIN TABLA PREGUNTAS-----------------------------------------------
+
+
+    console.log(encuestas); 
+    console.log(apartados);
+    console.log(preguntas); 
+    console.log(respuestas);   
+  
+   
 
   }
