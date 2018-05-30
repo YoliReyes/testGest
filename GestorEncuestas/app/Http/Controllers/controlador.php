@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+//importamos los modelos
 use App\encuestas;
 use App\idiomas;
 
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\DB;
 
 class controlador extends Controller
 {
+
     public function cargaTablaInicial()
     {
         $encuestas = DB::table('encuestas')
@@ -21,6 +23,7 @@ class controlador extends Controller
         return view ('index',compact('encuestas'));
     }
 
+
     public function iniciocrearencuesta()
     {
         $clave= $this->generaIdEncuesta();
@@ -29,11 +32,6 @@ class controlador extends Controller
                    ->get();
         
         return view ('crearencuesta',compact('idiomas','clave'));
-    }
-
-    public function iniciogestionarresultados()
-    {
-       return "inicio gestionar resultados";
     }
 
 
@@ -52,6 +50,12 @@ class controlador extends Controller
         $clave = $string . "_" . $number;
         
         return $clave;
+    }
+
+    //ruta de seccion resultados 
+    public function iniciogestionarresultados()
+    {
+       return "inicio gestionar resultados";
     }
 }
 

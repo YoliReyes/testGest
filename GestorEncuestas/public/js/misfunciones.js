@@ -36,7 +36,7 @@ function anadirdivpreguntas(cont_apartados){
 function generaHTMLpaso3(cont_apartados,valor){
 
     contenido = '<div class="alert alert-success alert-dismissible fade in" role="alert">';
-    contenido += '<button onclick = "$(\'#apartado' + cont_apartados + '_paso4\').remove();" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>';
+    contenido += '<button onclick = "$(\'#apartado' + cont_apartados + '_paso4\').remove(); $(\'#modal' + cont_apartados + '\').remove()" type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>';
     contenido += '<p><strong class="textosemidestacado"> APARTADO ' + cont_apartados + ' </strong></p>';
     contenido += '<p><strong>[ <span id="valorapartado">' + valor + '</span> puntos ] </strong> ( Valor Respecto al total de la encuesta ).</p></br>';
 
@@ -410,6 +410,9 @@ function onFinishCallback() {
     var valorpregunta ="";
     var idiomapregunta ="";
 
+    var respuestaintroducida="";
+    var valorrespuesta=0;
+
     $('#modals').find('.modal').each(function() { //cada modal equivale a un apartado
         
         var npregunta = 1;
@@ -431,7 +434,27 @@ function onFinishCallback() {
                 comentariopregunta = $(this).find('textarea')[1].value;
 
                 pregunta = { "apartado" : apartadopregunta ,"npregunta": npregunta, "formatopregunta": formatopregunta, "obligatorio" : obligatorio, "enunciado": enunciadopregunta,"comentario":comentariopregunta,"tiporespuesta": tiporespuesta, "valor": valorpregunta, "idioma" : idiomapregunta }; 
-                preguntas.push(pregunta); 
+                preguntas.push(pregunta);
+
+                //TABLA RESPUESTAS OPT/SALTO---------------------------------------------------
+                
+                if( formatopregunta == "opcion" || tiporespuesta == "salto" ){
+                    
+                    nth = 2;
+
+                    $(this).find('.respuestas_A' + apartadopregunta + 'P' + npregunta ).find('.actdesact').each(function() {
+                        
+                        respuestaintroducida = $( this ).val();
+                        valorrespuesta = $('#vp_A' + apartadopregunta + 'P' + npregunta ).find('.form-group:nth-of-type(' + nth + ')').find('input').val();
+                        
+                        respuesta = { "n_apartado" : apartadopregunta, "n_pregunta" : npregunta, "idioma" : idiomapregunta, "texto" : respuestaintroducida, "valor" : valorrespuesta };
+                        respuestas.push(respuesta)
+
+                        nth ++;
+                    });
+                }
+
+                //FIN TABLA RESPUESTAS OPT/SALTO---------------------------------------------------
 
                 idiomarot ++;
             });
@@ -443,12 +466,39 @@ function onFinishCallback() {
     });
     //FIN TABLA PREGUNTAS-----------------------------------------------
 
-
     console.log(encuestas); 
     console.log(apartados);
     console.log(preguntas); 
     console.log(respuestas);   
   
-   
+   //envio a controlador
+    
+
+ 
+
+    $.ajax({
+
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+
+        url: "/inserciondatos",
+        type: "POST",
+        dataType: "JSON",
+        data: {
+                'idiomas' : idiomas, 
+                'encuestas' : encuestas, 
+                'apartados' : apartados, 
+                'preguntas' : preguntas, 
+                'respuestas' : respuestas 
+              },//capturo array     
+
+    }).done(function(data){
+        if(data.error) console.log(data.error);
+        if(data.success) console.log(data.success);
+
+    }).fail(function(error){
+        console.log(error);
+    });
 
   }
