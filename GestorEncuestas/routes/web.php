@@ -25,7 +25,7 @@ Route::get('/iniciogestionarresultados', 'controlador@iniciogestionarresultados'
 //la ruta para la insercion está hecha con ajax/post en misfunciones.js
 //y se envia directamente al controlador inserciondatos.php
 
-Route::post('/inserciondatos', 'inserciondatos@search');
+Route::post('/inserciondatos', 'inserciondatos@insertdata');
 
 
 Route::get('/inserciondatos', function () {

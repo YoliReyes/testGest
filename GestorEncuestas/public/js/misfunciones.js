@@ -326,6 +326,7 @@ function activardesactivar( n_pregunta, cont_apartados ){
 //=========================================================================================
 
 //PASO FINAL insercción
+//Procedemos a recoger todos los datos e introducirlos en sus respectivos arrays
 
 function onFinishCallback() {
 
@@ -336,15 +337,15 @@ function onFinishCallback() {
     var respuestas = [];
     
     var id_encuesta= $(".x_title").find("h2").text().substr(0, 8);
-    var estado = false;
-    var comun = false;
+    var estado = 0;
+    var comun = 0;
 
     if($("#visible:checked").val() == "on"){
-        estado = true;
+        estado = 1;
     }
 
     if($("#comun:checked").val() == "on"){
-        estado = true;
+        estado = 1;
     }
 
     //TABLA ENCUESTA----------------------------------------------------
@@ -363,7 +364,7 @@ function onFinishCallback() {
         descripcionencuesta = $('#descripcion'+ idioma ).val();
 
         //rellenamos array encuestas para posterior envio e inserción en base de datos        
-        encuesta = { "titulo" : tituloencuesta, "descripcion": descripcionencuesta, "estado": estado, "idioma" : idioma, "clave" : id_encuesta }; 
+        encuesta = { "titulo_encuesta" : tituloencuesta, "descripion_encuesta": descripcionencuesta, "estado_encuesta": estado, "idioma" : idioma, "clave_encuesta" : id_encuesta }; 
         encuestas.push(encuesta); 
     
     });
@@ -377,12 +378,13 @@ function onFinishCallback() {
     var idiomaapartado ="";
     var tituloapartado = "";
     var descripcionapartado = "";
-    var valorapartado = "";
-    var napartado=1;
+    var valorapartado = 0;
+    var napartado= 1;
+
    
     $('#apartados').find('.alert').each(function() { 
 
-        valorapartado = $(this).find('#valorapartado').text();
+        valorapartado = parseInt($(this).find('#valorapartado').text());
 
         $(this).find('.apartado').each(function() { 
 
@@ -390,11 +392,13 @@ function onFinishCallback() {
             tituloapartado = $(this).find('#tituloA').text();
             descripcionapartado = $(this).find('#descripcionA').text();
 
-            apartado = { "claveencuesta" : id_encuesta,"napartado": napartado, "titulo" : tituloapartado, "descripcion": descripcionapartado, "valor": valorapartado, "comun": comun, "idioma" : idiomaapartado }; 
+            apartado = { "clave_encuesta" : id_encuesta, "n_apartado": napartado, "titulo_apartado" : tituloapartado, "descripcion_apartado": descripcionapartado, "valor_porcentaje_apartado": valorapartado, "comun": comun, "idioma" : idiomaapartado }; 
             apartados.push(apartado);   
         });
+
         napartado ++;
-    });
+
+        });
 
     //FIN TABLA APARTADOS-----------------------------------------------
 
@@ -464,18 +468,16 @@ function onFinishCallback() {
 
         apartadopregunta ++;
     });
+
     //FIN TABLA PREGUNTAS-----------------------------------------------
 
-    console.log(encuestas); 
+    // console.log(encuestas); 
     console.log(apartados);
-    console.log(preguntas); 
-    console.log(respuestas);   
-  
+    // console.log(preguntas); 
+    // console.log(respuestas);   
+
    //envio a controlador
     
-
- 
-
     $.ajax({
 
         headers: {
