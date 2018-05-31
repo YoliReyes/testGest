@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 29-05-2018 a las 15:25:23
+-- Tiempo de generación: 31-05-2018 a las 14:58:30
 -- Versión del servidor: 5.7.22-0ubuntu0.16.04.1
 -- Versión de PHP: 7.0.30-0ubuntu0.16.04.1
 
@@ -29,8 +29,9 @@ SET time_zone = "+00:00";
 CREATE TABLE `apartados` (
   `id_apartado` int(10) UNSIGNED NOT NULL,
   `clave_encuesta` varchar(8) COLLATE utf8_spanish_ci NOT NULL,
-  `titulo_apartado` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `descripcion_apartado` text COLLATE utf8_spanish_ci NOT NULL,
+  `n_apartado` int(11) NOT NULL,
+  `titulo_apartado` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `descripcion_apartado` text COLLATE utf8_spanish_ci,
   `valor_porcentaje_apartado` int(10) UNSIGNED NOT NULL DEFAULT '0',
   `comun` tinyint(1) NOT NULL DEFAULT '0',
   `idioma` varchar(3) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'es',
@@ -46,27 +47,14 @@ CREATE TABLE `apartados` (
 
 CREATE TABLE `encuestas` (
   `id_encuesta` int(10) UNSIGNED NOT NULL,
-  `titulo_encuesta` varchar(255) COLLATE utf8_spanish_ci NOT NULL,
-  `descripion_encuesta` text COLLATE utf8_spanish_ci NOT NULL,
+  `titulo_encuesta` varchar(255) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `descripion_encuesta` text COLLATE utf8_spanish_ci,
   `estado_encuesta` tinyint(1) NOT NULL DEFAULT '0',
   `idioma` varchar(3) COLLATE utf8_spanish_ci NOT NULL DEFAULT 'es',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `clave_encuesta` varchar(8) COLLATE utf8_spanish_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `encuestas_apartados`
---
-
-CREATE TABLE `encuestas_apartados` (
-  `id_encuesta_rel` int(10) UNSIGNED NOT NULL,
-  `id_apartado_rel` int(10) UNSIGNED NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -181,13 +169,6 @@ ALTER TABLE `encuestas`
   ADD KEY `id_encuesta_3` (`id_encuesta`);
 
 --
--- Indices de la tabla `encuestas_apartados`
---
-ALTER TABLE `encuestas_apartados`
-  ADD KEY `encuestas_apartados_id_encuesta_rel_id_apartado_rel_index` (`id_encuesta_rel`,`id_apartado_rel`),
-  ADD KEY `id_apartado_rel` (`id_apartado_rel`);
-
---
 -- Indices de la tabla `idiomas`
 --
 ALTER TABLE `idiomas`
@@ -234,27 +215,27 @@ ALTER TABLE `respuestas_usuarios`
 -- AUTO_INCREMENT de la tabla `apartados`
 --
 ALTER TABLE `apartados`
-  MODIFY `id_apartado` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_apartado` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `encuestas`
 --
 ALTER TABLE `encuestas`
-  MODIFY `id_encuesta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_encuesta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT de la tabla `preguntas`
 --
 ALTER TABLE `preguntas`
-  MODIFY `id_pregunta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_pregunta` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `recomendaciones`
 --
 ALTER TABLE `recomendaciones`
-  MODIFY `id_recomendacion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_recomendacion` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `respuestas_tipo_opcionals`
 --
 ALTER TABLE `respuestas_tipo_opcionals`
-  MODIFY `id_resp_opt` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_resp_opt` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- Restricciones para tablas volcadas
 --
@@ -270,13 +251,6 @@ ALTER TABLE `apartados`
 --
 ALTER TABLE `encuestas`
   ADD CONSTRAINT `encuestas_ibfk_1` FOREIGN KEY (`idioma`) REFERENCES `idiomas` (`id_idioma`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `encuestas_apartados`
---
-ALTER TABLE `encuestas_apartados`
-  ADD CONSTRAINT `encuestas_apartados_ibfk_1` FOREIGN KEY (`id_encuesta_rel`) REFERENCES `encuestas` (`id_encuesta`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `encuestas_apartados_ibfk_2` FOREIGN KEY (`id_apartado_rel`) REFERENCES `apartados` (`id_apartado`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `preguntas`
